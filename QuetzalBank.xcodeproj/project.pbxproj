@@ -14,6 +14,16 @@
 		F1F54F9D2A412D2E0061EBC8 /* QuetzalBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54F9C2A412D2E0061EBC8 /* QuetzalBankTests.swift */; };
 		F1F54FA72A412D2E0061EBC8 /* QuetzalBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FA62A412D2E0061EBC8 /* QuetzalBankUITests.swift */; };
 		F1F54FA92A412D2E0061EBC8 /* QuetzalBankUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FA82A412D2E0061EBC8 /* QuetzalBankUITestsLaunchTests.swift */; };
+		F1F54FBA2A4133D30061EBC8 /* BankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FB92A4133D30061EBC8 /* BankService.swift */; };
+		F1F54FBD2A4134CC0061EBC8 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FBC2A4134CC0061EBC8 /* APIConfig.swift */; };
+		F1F54FC22A4136040061EBC8 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FC12A4136040061EBC8 /* Bank.swift */; };
+		F1F54FC42A4137470061EBC8 /* BankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FC32A4137470061EBC8 /* BankViewModel.swift */; };
+		F1F54FC62A4138030061EBC8 /* BankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FC52A4138030061EBC8 /* BankView.swift */; };
+		F1F54FC82A4139350061EBC8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FC72A4139350061EBC8 /* UserService.swift */; };
+		F1F54FCA2A413B140061EBC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FC92A413B140061EBC8 /* User.swift */; };
+		F1F54FCC2A413BB70061EBC8 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FCB2A413BB70061EBC8 /* RegisterResponse.swift */; };
+		F1F54FCE2A413BF80061EBC8 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FCD2A413BF80061EBC8 /* UserViewModel.swift */; };
+		F1F54FD02A413C840061EBC8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54FCF2A413C840061EBC8 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,16 @@
 		F1F54FA22A412D2E0061EBC8 /* QuetzalBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuetzalBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F54FA62A412D2E0061EBC8 /* QuetzalBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuetzalBankUITests.swift; sourceTree = "<group>"; };
 		F1F54FA82A412D2E0061EBC8 /* QuetzalBankUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuetzalBankUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F1F54FB92A4133D30061EBC8 /* BankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankService.swift; sourceTree = "<group>"; };
+		F1F54FBC2A4134CC0061EBC8 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		F1F54FC12A4136040061EBC8 /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
+		F1F54FC32A4137470061EBC8 /* BankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewModel.swift; sourceTree = "<group>"; };
+		F1F54FC52A4138030061EBC8 /* BankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankView.swift; sourceTree = "<group>"; };
+		F1F54FC72A4139350061EBC8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		F1F54FC92A413B140061EBC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1F54FCB2A413BB70061EBC8 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		F1F54FCD2A413BF80061EBC8 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		F1F54FCF2A413C840061EBC8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +114,11 @@
 		F1F54F8A2A412D2E0061EBC8 /* QuetzalBank */ = {
 			isa = PBXGroup;
 			children = (
+				F1F54FBB2A4134BB0061EBC8 /* Utils */,
+				F1F54FB82A4133960061EBC8 /* Services */,
+				F1F54FB72A41338A0061EBC8 /* ViewModels */,
+				F1F54FB62A4133840061EBC8 /* Views */,
+				F1F54FB52A4133770061EBC8 /* Models */,
 				F1F54F8B2A412D2E0061EBC8 /* QuetzalBankApp.swift */,
 				F1F54F8D2A412D2E0061EBC8 /* ContentView.swift */,
 				F1F54F8F2A412D2E0061EBC8 /* Assets.xcassets */,
@@ -125,6 +150,51 @@
 				F1F54FA82A412D2E0061EBC8 /* QuetzalBankUITestsLaunchTests.swift */,
 			);
 			path = QuetzalBankUITests;
+			sourceTree = "<group>";
+		};
+		F1F54FB52A4133770061EBC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1F54FC12A4136040061EBC8 /* Bank.swift */,
+				F1F54FC92A413B140061EBC8 /* User.swift */,
+				F1F54FCB2A413BB70061EBC8 /* RegisterResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1F54FB62A4133840061EBC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1F54FC52A4138030061EBC8 /* BankView.swift */,
+				F1F54FCF2A413C840061EBC8 /* RegisterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1F54FB72A41338A0061EBC8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F1F54FC32A4137470061EBC8 /* BankViewModel.swift */,
+				F1F54FCD2A413BF80061EBC8 /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F1F54FB82A4133960061EBC8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F1F54FB92A4133D30061EBC8 /* BankService.swift */,
+				F1F54FC72A4139350061EBC8 /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F1F54FBB2A4134BB0061EBC8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F1F54FBC2A4134CC0061EBC8 /* APIConfig.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +328,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F54F8E2A412D2E0061EBC8 /* ContentView.swift in Sources */,
+				F1F54FCE2A413BF80061EBC8 /* UserViewModel.swift in Sources */,
+				F1F54FBA2A4133D30061EBC8 /* BankService.swift in Sources */,
+				F1F54FC22A4136040061EBC8 /* Bank.swift in Sources */,
+				F1F54FCC2A413BB70061EBC8 /* RegisterResponse.swift in Sources */,
+				F1F54FBD2A4134CC0061EBC8 /* APIConfig.swift in Sources */,
+				F1F54FC82A4139350061EBC8 /* UserService.swift in Sources */,
+				F1F54FCA2A413B140061EBC8 /* User.swift in Sources */,
+				F1F54FC42A4137470061EBC8 /* BankViewModel.swift in Sources */,
+				F1F54FD02A413C840061EBC8 /* RegisterView.swift in Sources */,
 				F1F54F8C2A412D2E0061EBC8 /* QuetzalBankApp.swift in Sources */,
+				F1F54FC62A4138030061EBC8 /* BankView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
