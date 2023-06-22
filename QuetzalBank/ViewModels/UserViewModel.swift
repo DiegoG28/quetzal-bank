@@ -8,11 +8,11 @@
 import Foundation
 
 class UserViewModel: ObservableObject {
-    @Published var user: User?
+    @Published var user: UserModel?
     @Published var message: String = ""
     private var userService = UserService()
     
-    func registerUser(user: User) async {
+    func registerUser(user: UserRequestModel) async {
         do {
             let response = try await userService.registerUser(user: user)
             DispatchQueue.main.async {

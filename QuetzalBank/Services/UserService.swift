@@ -8,7 +8,7 @@
 import Foundation
 
 class UserService {
-    func registerUser(user: User) async throws -> RegisterResponse {
+    func registerUser(user: UserRequestModel) async throws -> APIResponse<UserModel> {
             guard let url = URL(string: APIConfig.baseUrl + "/users") else {
                 throw URLError(.badURL)
             }
@@ -24,7 +24,7 @@ class UserService {
                 throw URLError(.badServerResponse)
             }
 
-            let registerResponse = try JSONDecoder().decode(RegisterResponse.self, from: data)
-            return registerResponse
+            let decodedResponse = try JSONDecoder().decode(APIResponse<UserModel>.self, from: data)
+            return decodedResponse
         }
 }

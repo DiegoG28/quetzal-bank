@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject private var viewModel = UserViewModel()
-    @State private var user = User(name: "", lastname: "", email: "", rfc: "", phone: "", password: "", id_bank: 8)
+    @State private var user = UserRequestModel(name: "", lastname: "", email: "", rfc: "", phone: "", password: "", id_bank: 8)
     
     var body: some View {
         VStack {
