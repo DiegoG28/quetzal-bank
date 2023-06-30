@@ -26,5 +26,5 @@ class UserService {
 
             let decodedResponse = try JSONDecoder().decode(APIResponse<UserModel>.self, from: data)
             return decodedResponse
-        }
+    }
 }
