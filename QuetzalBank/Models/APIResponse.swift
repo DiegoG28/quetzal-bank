@@ -9,6 +9,16 @@ import Foundation
 
 struct APIResponse<T: Codable>: Codable {
     let status: String
-    let message: String
-    let data: T
+    let message: String?
+    let data: T?
+    let errors: [APIError]?
+}
+
+struct APIError: Codable {
+    var property: String
+    var constraints: APIErrorConstraints
+}
+
+struct APIErrorConstraints: Codable {
+    var minLength: String?
 }

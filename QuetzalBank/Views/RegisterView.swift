@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject private var viewModel = UserViewModel()
-    @State private var user = UserRequestModel(name: "", lastname: "", email: "", rfc: "", phone: "", password: "", id_bank: 8)
+    @State private var user = UserRequestModel(name: "Diego", lastname: "Gutiérrez", email: "diegogutcat28@gmail.com", rfc: "dfdlpokiopqw1", phone: "9984186557", password: "dfsdfad", id_bank: 1)
     
     var body: some View {
         VStack {
@@ -25,6 +25,10 @@ struct RegisterView: View {
                 }
             }
             Text(viewModel.message)
+            
+            ForEach(viewModel.errors, id: \.self) { error in
+                Text(error)
+            }
         }
         .padding()
     }
