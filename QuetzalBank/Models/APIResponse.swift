@@ -8,10 +8,11 @@
 import Foundation
 
 struct APIResponse<T: Codable>: Codable {
-    let status: String
+    let status: String?
     let message: String?
     let data: T?
     let errors: [APIError]?
+    let access_token: String?
 }
 
 struct APIError: Codable {

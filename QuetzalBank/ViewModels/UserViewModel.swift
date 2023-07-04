@@ -11,9 +11,11 @@ class UserViewModel: ObservableObject {
     @Published var user: UserModel?
     @Published var message: String = ""
     @Published var errors: [String] = []
+    @Published var accessToken: String?
+    let defaults = UserDefaults.standard
     private var userService = UserService()
     
-    func registerUser(user: UserRequestModel) async {
+    func registerUser(user: UserRegisterModel) async {
         do {
             DispatchQueue.main.async {
                 self.errors = []
@@ -33,7 +35,23 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func userDataIsValid(_ user: UserRequestModel) -> Bool {
+    func logInUser(user: UserLogInModel) async {
+        do {
+            let response = try await userService.logInUser(user: user)
+            DispatchQueue.main.async {
+                self.message = response.message ?? "Se inició sesión correctamente"
+                self.accessToken = response.access_token
+                self.defaults.set(self.accessToken, forKey: "token")
+                print(self.accessToken ?? "")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.message = "Error al registrarse: \(error)"
+            }
+        }
+    }
+    
+    func userDataIsValid(_ user: UserRegisterModel) -> Bool {
         var errors: [String] = []
         if (user.rfc.count != 13) {
             errors.append("El RFC debe contener 13 caracteres")

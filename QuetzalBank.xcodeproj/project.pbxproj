@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD992A5393E00076EFFE /* LoginView.swift */; };
+		F169FD9C2A5395050076EFFE /* UserLogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD9B2A5395050076EFFE /* UserLogInModel.swift */; };
 		F1E39B532A4362F60062F56E /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B522A4362F60062F56E /* APIResponse.swift */; };
-		F1E39B552A43668F0062F56E /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B542A43668F0062F56E /* UserRequestModel.swift */; };
+		F1E39B552A43668F0062F56E /* UserRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B542A43668F0062F56E /* UserRegisterModel.swift */; };
 		F1E39B572A4366FF0062F56E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B562A4366FF0062F56E /* APIService.swift */; };
 		F1F54F8C2A412D2E0061EBC8 /* QuetzalBankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54F8B2A412D2E0061EBC8 /* QuetzalBankApp.swift */; };
 		F1F54F8E2A412D2E0061EBC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54F8D2A412D2E0061EBC8 /* ContentView.swift */; };
@@ -46,8 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F169FD992A5393E00076EFFE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F169FD9B2A5395050076EFFE /* UserLogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogInModel.swift; sourceTree = "<group>"; };
 		F1E39B522A4362F60062F56E /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
-		F1E39B542A43668F0062F56E /* UserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
+		F1E39B542A43668F0062F56E /* UserRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterModel.swift; sourceTree = "<group>"; };
 		F1E39B562A4366FF0062F56E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F1F54F882A412D2E0061EBC8 /* QuetzalBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuetzalBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F54F8B2A412D2E0061EBC8 /* QuetzalBankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuetzalBankApp.swift; sourceTree = "<group>"; };
@@ -99,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				F1F54FC92A413B140061EBC8 /* UserModel.swift */,
-				F1E39B542A43668F0062F56E /* UserRequestModel.swift */,
+				F1E39B542A43668F0062F56E /* UserRegisterModel.swift */,
+				F169FD9B2A5395050076EFFE /* UserLogInModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				F1F54FC52A4138030061EBC8 /* BankView.swift */,
 				F1F54FCF2A413C840061EBC8 /* RegisterView.swift */,
+				F169FD992A5393E00076EFFE /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,10 +350,12 @@
 				F1F54F8E2A412D2E0061EBC8 /* ContentView.swift in Sources */,
 				F1F54FCE2A413BF80061EBC8 /* UserViewModel.swift in Sources */,
 				F1F54FBA2A4133D30061EBC8 /* BankService.swift in Sources */,
+				F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */,
 				F1F54FC22A4136040061EBC8 /* BankModel.swift in Sources */,
-				F1E39B552A43668F0062F56E /* UserRequestModel.swift in Sources */,
+				F1E39B552A43668F0062F56E /* UserRegisterModel.swift in Sources */,
 				F1F54FBD2A4134CC0061EBC8 /* APIConfig.swift in Sources */,
 				F1F54FC82A4139350061EBC8 /* UserService.swift in Sources */,
+				F169FD9C2A5395050076EFFE /* UserLogInModel.swift in Sources */,
 				F1E39B532A4362F60062F56E /* APIResponse.swift in Sources */,
 				F1E39B572A4366FF0062F56E /* APIService.swift in Sources */,
 				F1F54FCA2A413B140061EBC8 /* UserModel.swift in Sources */,
