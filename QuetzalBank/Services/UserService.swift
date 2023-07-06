@@ -37,8 +37,12 @@ class UserService {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(user)
-        let (data, _) = try await URLSession.shared.data(for: request)
-
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+                throw URLError(.badServerResponse)
+        }
+        
         /* guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw URLError(.badServerResponse)
         } */
