@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIConfig {
-    static let baseUrl = "http://172.16.128.55:3000"
+    static let baseUrl = "http:/localhost:3000"
 }

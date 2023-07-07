@@ -10,11 +10,13 @@ import SwiftUI
 struct LoginView: View {
     @StateObject private var viewModel = UserViewModel()
     
-    @State private var user = UserLogInModel(phone: "", password:  "")
+    @State private var user = UserLoginRequest(phone: "", password:  "")
     @State private var showRegisterView = false
+    @State private var active = false
     
     @Binding var isUserLoggedIn: Bool
     @Binding var emailText: String
+
     
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
@@ -37,17 +39,23 @@ struct LoginView: View {
                 .textFieldStyle(CustomTextFieldStyle())
                 .padding(.bottom, 10)
                 
-                SecureField("", text: $user.phone, prompt:
+                SecureField("", text: $user.password, prompt:
                                 Text("Password")
                     .foregroundColor(QColor.white).bodyFont)
                 .textFieldStyle(CustomTextFieldStyle())
                 .padding(.bottom, 20)
+                
+                Toggle(isOn: $active, label: {
+                    Text("Use FaceID to log in").smallFont
+                })
+                .toggleStyle(CustomToggleStyle())
                 
                 Button {
                     Task {
                         await viewModel.logInUser(user: user)
                         if (viewModel.accessToken != nil) {
                             isUserLoggedIn = true
+                            await viewModel.fetchAccountData()
                         }
                     }
                 } label: {

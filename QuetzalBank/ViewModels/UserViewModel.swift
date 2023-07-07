@@ -12,10 +12,11 @@ class UserViewModel: ObservableObject {
     @Published var message: String = ""
     @Published var errors: [String] = []
     @Published var accessToken: String?
+    @Published var account: AccountModel?
     let defaults = UserDefaults.standard
     private var userService = UserService()
     
-    func registerUser(user: UserRegisterModel) async {
+    func registerUser(user: UserRegisterRequest) async {
         do {
             DispatchQueue.main.async {
                 self.errors = []
@@ -35,23 +36,38 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func logInUser(user: UserLogInModel) async {
+    func logInUser(user: UserLoginRequest) async {
         do {
             let response = try await userService.logInUser(user: user)
             DispatchQueue.main.async {
                 self.message = response.message ?? "Se inició sesión correctamente"
                 self.accessToken = response.access_token
                 self.defaults.set(self.accessToken, forKey: "token")
-                print(self.accessToken ?? "")
             }
         } catch {
             DispatchQueue.main.async {
                 self.message = "Error al registrarse: \(error)"
+                print("Error al registrarse: \(error)")
             }
         }
     }
     
-    func userDataIsValid(_ user: UserRegisterModel) -> Bool {
+    func fetchAccountData() async {
+        do {
+            let response = try await userService.getAccountData()
+            DispatchQueue.main.async {
+                self.account = response.data
+                print(self.account ?? "")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.message = "Error al obtener datos del usuario: \(error)"
+                print("Error al obtener datos del usuario: \(error)")
+            }
+        }
+    }
+    
+    func userDataIsValid(_ user: UserRegisterRequest) -> Bool {
         var errors: [String] = []
         if (user.rfc.count != 13) {
             errors.append("El RFC debe contener 13 caracteres")

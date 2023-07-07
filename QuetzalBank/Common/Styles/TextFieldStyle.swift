@@ -5,7 +5,6 @@
 //  Created by Diego Gutiérrez on 06/07/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct CustomTextFieldStyle: TextFieldStyle {
