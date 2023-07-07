@@ -13,11 +13,12 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            QColor.background.edgesIgnoringSafeArea(.all)
             if (isUserLoggedIn) {
                 BankView(isUserLoggedIn: $isUserLoggedIn).padding()
             } else {
-                LoginView(isUserLoggedIn: $isUserLoggedIn, emailText: $emailText).padding()
+                NavigationStack {
+                    LoginView(isUserLoggedIn: $isUserLoggedIn, emailText: $emailText)
+                }
             }
         }
     }

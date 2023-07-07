@@ -39,7 +39,7 @@ class UserService {
         request.httpBody = try JSONEncoder().encode(user)
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse else {
+        guard response is HTTPURLResponse else {
                 throw URLError(.badServerResponse)
         }
         
@@ -50,4 +50,6 @@ class UserService {
         let decodedResponse = try JSONDecoder().decode(APIResponse<UserModel>.self, from: data)
         return decodedResponse
     }
+    
+    func getUser
 }

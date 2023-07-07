@@ -9,7 +9,10 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = UserViewModel()
+    
     @State private var user = UserLogInModel(phone: "", password:  "")
+    @State private var showRegisterView = false
+    
     @Binding var isUserLoggedIn: Bool
     @Binding var emailText: String
     
@@ -19,15 +22,26 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            Spacer()            
+            QColor.background.ignoresSafeArea()
+            Spacer()
             VStack {
                 Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
                 
-                CustomTextField(text: $user.phone, placeholder: "Phone number").padding(.bottom, 10)
-                CustomTextField(text: $user.password, placeholder: "Password", isSecure: true).padding(.bottom, 20)
+
+                TextField("", text: $user.phone, prompt:
+                            Text("Phone number")
+                    .foregroundColor(QColor.white).bodyFont)
+                .textFieldStyle(CustomTextFieldStyle())
+                .padding(.bottom, 10)
+                
+                SecureField("", text: $user.phone, prompt:
+                                Text("Password")
+                    .foregroundColor(QColor.white).bodyFont)
+                .textFieldStyle(CustomTextFieldStyle())
+                .padding(.bottom, 20)
                 
                 Button {
                     Task {
@@ -44,13 +58,17 @@ struct LoginView: View {
                 Text("Forgot your password?").smallFont.padding(.bottom, 30)
                 
                 Button {
-                    
+                    showRegisterView = true
                 } label: {
                     Text("Sign up").frame(maxWidth: .infinity)
                 }
                 .buttonStyle(GradientButton())
                 
                 
+            }
+            .padding()
+            .navigationDestination(isPresented: $showRegisterView) {
+                RegisterView()
             }
             Spacer()
         }

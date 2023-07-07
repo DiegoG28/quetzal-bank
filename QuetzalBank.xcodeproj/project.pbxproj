@@ -13,6 +13,7 @@
 		F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD992A5393E00076EFFE /* LoginView.swift */; };
 		F169FD9C2A5395050076EFFE /* UserLogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD9B2A5395050076EFFE /* UserLogInModel.swift */; };
 		F170E2292A577CDD00639900 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170E2282A577CDD00639900 /* SecondaryButton.swift */; };
+		F170E22B2A5792FF00639900 /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170E22A2A5792FE00639900 /* TextFieldStyle.swift */; };
 		F1A62F032A5761DA009887CF /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1A62F012A5761DA009887CF /* Nunito-SemiBold.ttf */; };
 		F1A62F042A5761DA009887CF /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1A62F022A5761DA009887CF /* Nunito-Regular.ttf */; };
 		F1A62F072A5763AE009887CF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62F062A5763AE009887CF /* Font.swift */; };
@@ -68,6 +69,7 @@
 		F169FD992A5393E00076EFFE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F169FD9B2A5395050076EFFE /* UserLogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogInModel.swift; sourceTree = "<group>"; };
 		F170E2282A577CDD00639900 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		F170E22A2A5792FE00639900 /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		F1A62F012A5761DA009887CF /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		F1A62F022A5761DA009887CF /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		F1A62F052A5762E1009887CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				F110251B2A5738CF002E9163 /* MainButton.swift */,
 				F1A62F082A5772F5009887CF /* GradientButton.swift */,
 				F170E2282A577CDD00639900 /* SecondaryButton.swift */,
+				F170E22A2A5792FE00639900 /* TextFieldStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				F1F54FCE2A413BF80061EBC8 /* UserViewModel.swift in Sources */,
 				F1F54FBA2A4133D30061EBC8 /* BankService.swift in Sources */,
 				F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */,
+				F170E22B2A5792FF00639900 /* TextFieldStyle.swift in Sources */,
 				F1F54FC22A4136040061EBC8 /* BankModel.swift in Sources */,
 				F1E39B552A43668F0062F56E /* UserRegisterModel.swift in Sources */,
 				F110251E2A573A26002E9163 /* QColor.swift in Sources */,
