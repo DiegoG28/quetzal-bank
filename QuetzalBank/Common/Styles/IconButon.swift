@@ -1,13 +1,13 @@
 //
-//  GradientButtonStyle.swift
+//  IconButon.swift
 //  QuetzalBank
 //
-//  Created by Diego Gutiérrez on 06/07/23.
+//  Created by Diego Gutiérrez on 07/07/23.
 //
 
 import SwiftUI
 
-struct GradientButton: ButtonStyle {
+struct IconButton: ButtonStyle {
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
                                   endPoint: .bottomTrailing)
@@ -15,22 +15,20 @@ struct GradientButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(configuration.isPressed ? QColor.white : QColor.gradientText)
-            .padding(10)
-            .contentShape(Rectangle())
+            .padding(20)
+            .contentShape(Circle())
             .background(
                 Group {
                     if configuration.isPressed {
-                        RoundedRectangle(cornerRadius: 7)
+                        Circle()
                             .fill(gradient)
                     } else {
-                        RoundedRectangle(cornerRadius: 7)
+                        Circle()
                             .stroke(gradient, lineWidth: 2)
                             .saturation(1.8)
                     }
                 }
             )
-            .cornerRadius(7)
             .font(.NunitoRegular(size: 18))
-            .frame(maxWidth: .infinity)
     }
 }

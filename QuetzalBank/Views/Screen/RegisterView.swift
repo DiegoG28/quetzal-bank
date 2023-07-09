@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @StateObject private var viewModel = UserViewModel()
+    @StateObject private var viewModel = RegisterViewModel()
     @State private var user = UserRegisterRequest(name: "Diego", lastname: "Gutiérrez", email: "diegogutcat28@gmail.com", rfc: "dfdlpokiopqw1", phone: "9984186557", password: "dfsdfad", id_bank: 8)
     
     var body: some View {
@@ -68,7 +68,7 @@ struct RegisterView: View {
                 
                 Button {
                     Task {
-                        await viewModel.registerUser(user: user)
+                        await viewModel.register(user: user)
                     }                } label: {
                     Text("Continue").frame(maxWidth: .infinity)
                 }

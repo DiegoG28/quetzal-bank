@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = UserViewModel()
+    @StateObject private var viewModel = LoginViewModel()
     
     @State private var user = UserLoginRequest(phone: "", password:  "")
     @State private var showRegisterView = false
@@ -52,7 +52,7 @@ struct LoginView: View {
                 
                 Button {
                     Task {
-                        await viewModel.logInUser(user: user)
+                        await viewModel.login(user: user)
                         if (viewModel.accessToken != nil) {
                             isUserLoggedIn = true
                             await viewModel.fetchAccountData()

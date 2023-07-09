@@ -1,22 +1,24 @@
 //
-//  UserViewModel.swift
+//  RegisterViewModel.swift
 //  QuetzalBank
 //
-//  Created by Diego Gutiérrez on 19/06/23.
+//  Created by Diego Gutiérrez on 08/07/23.
 //
 
 import Foundation
 
-class UserViewModel: ObservableObject {
+class RegisterViewModel: ObservableObject {
     @Published var user: UserModel?
     @Published var message: String = ""
     @Published var errors: [String] = []
     @Published var accessToken: String?
     @Published var account: AccountModel?
     let defaults = UserDefaults.standard
-    private var userService = UserService()
     
-    func registerUser(user: UserRegisterRequest) async {
+    private var accountService = AccountService()
+    private var authService = AuthService()
+    
+    func register(user: UserRegisterRequest) async {
         do {
             DispatchQueue.main.async {
                 self.errors = []
@@ -24,45 +26,15 @@ class UserViewModel: ObservableObject {
             if (!userDataIsValid(user)) {
                 return
             }
-            let response = try await userService.registerUser(user: user)
+            let response = try await authService.registerUser(user: user)
             DispatchQueue.main.async {
+                // La información del usuario se recibe al registrarse, de cualquier forma se hace una petición a accounts/me en LoginView para obtener los datos completos.
                 self.user = response.data
                 self.message = response.message ?? "Usuario registrado"
             }
         } catch {
             DispatchQueue.main.async {
                 self.message = "Error al registrarse: \(error)"
-            }
-        }
-    }
-    
-    func logInUser(user: UserLoginRequest) async {
-        do {
-            let response = try await userService.logInUser(user: user)
-            DispatchQueue.main.async {
-                self.message = response.message ?? "Se inició sesión correctamente"
-                self.accessToken = response.access_token
-                self.defaults.set(self.accessToken, forKey: "token")
-            }
-        } catch {
-            DispatchQueue.main.async {
-                self.message = "Error al registrarse: \(error)"
-                print("Error al registrarse: \(error)")
-            }
-        }
-    }
-    
-    func fetchAccountData() async {
-        do {
-            let response = try await userService.getAccountData()
-            DispatchQueue.main.async {
-                self.account = response.data
-                print(self.account ?? "")
-            }
-        } catch {
-            DispatchQueue.main.async {
-                self.message = "Error al obtener datos del usuario: \(error)"
-                print("Error al obtener datos del usuario: \(error)")
             }
         }
     }

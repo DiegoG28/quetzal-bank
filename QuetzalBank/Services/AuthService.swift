@@ -1,13 +1,14 @@
 //
-//  UserService.swift
+//  AuthService.swift
 //  QuetzalBank
 //
-//  Created by Diego Gutiérrez on 19/06/23.
+//  Created by Diego Gutiérrez on 08/07/23.
 //
 
 import Foundation
 
-class UserService {
+class AuthService {
+    
     func registerUser(user: UserRegisterRequest
     ) async throws -> APIResponse<UserModel> {
 
@@ -52,24 +53,4 @@ class UserService {
         let decodedResponse = try JSONDecoder().decode(APIResponse<UserModel>.self, from: data)
         return decodedResponse
     }
-    
-    func getAccountData () async throws -> APIResponse<AccountModel> {
-        guard let url = URL(string: APIConfig.baseUrl + "/accounts/me") else {
-            throw URLError(.badURL)
-        }
-        
-        let defaults = UserDefaults.standard
-        let token = defaults.string(forKey: "token")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-        let (data, _) = try await URLSession.shared.data(for: request)
-        
-        let response = try JSONDecoder().decode(APIResponse<AccountModel>.self, from: data)
-        return response
-    }
-    
 }
