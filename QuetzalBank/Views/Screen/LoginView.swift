@@ -44,10 +44,12 @@ struct LoginView: View {
                 .textFieldStyle(CustomTextFieldStyle())
                 .padding(.bottom, 20)
                 
-                Toggle(isOn: $allowFaceID, label: {
-                    Text("Use FaceID to log in").smallFont
-                })
-                .toggleStyle(CustomToggleStyle())
+                if defaults.object(forKey: "token") != nil {
+                    Toggle(isOn: $allowFaceID, label: {
+                        Text("Use FaceID to log in").smallFont
+                    })
+                    .toggleStyle(CustomToggleStyle())
+                }
                 
                 Button {
                     print(allowFaceID)
