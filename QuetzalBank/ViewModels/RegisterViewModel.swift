@@ -10,6 +10,7 @@ import Foundation
 class RegisterViewModel: ObservableObject {
     @Published var message: String = ""
     @Published var errors: [String: String] = [:]
+    @Published var successRegister = false
 
     private var authService = AuthService()
     
@@ -20,7 +21,9 @@ class RegisterViewModel: ObservableObject {
             }
             let response = try await authService.registerUser(user: user)
             DispatchQueue.main.async {
-                self.message = response.message ?? "Usuario registrado"
+                if (response.status == "Success") {
+                    self.successRegister = true
+                }
             }
         } catch {
             DispatchQueue.main.async {

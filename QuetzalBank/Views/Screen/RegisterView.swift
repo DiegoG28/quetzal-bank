@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject private var viewModel = RegisterViewModel()
-    @State private var user = UserRegisterRequest(name: "Diego", lastname: "Gutiérrez", email: "diegogutcat28@gmail.com", rfc: "dfdlpokiopqw1", phone: "9984186557", password: "dfsdfad", id_bank: 8)
+    @State private var user = UserRegisterRequest(name: "Diego", lastname: "Gutiérrez", email: "diegogutcat29@gmail.com", rfc: "dfdlpokiopqw2", phone: "9984186558", password: "dfsdfad", id_bank: 2)
+    @State var successRegister = false
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -101,12 +102,18 @@ struct RegisterView: View {
                 Button {
                     Task {
                         await viewModel.register(user: user)
+                        if (viewModel.successRegister) {
+                            successRegister = true
+                        }
                     }                } label: {
                         Text("Continue").frame(maxWidth: .infinity)
                     }
                     .buttonStyle(MainButton())
             }
             .padding()
+            .navigationDestination(isPresented: $successRegister) {
+                LoginView()
+            }
         }
     }
 }

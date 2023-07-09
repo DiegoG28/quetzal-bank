@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
+    @ObservedObject private var registerViewModel = RegisterViewModel()
+
     
     @State private var user = UserLoginRequest(phone: "", password:  "")
     @State private var showRegisterView = false

@@ -7,7 +7,28 @@
 
 import SwiftUI
 
+extension String {
+    func split(every chunkSize: Int) -> [String] {
+        stride(from: 0, to: self.count, by: chunkSize).map {
+            let start = self.index(self.startIndex, offsetBy: $0)
+            let end = self.index(start, offsetBy: chunkSize, limitedBy: self.endIndex) ?? self.endIndex
+            return String(self[start..<end])
+        }
+    }
+}
+
 struct DashboardView: View {
+    @ObservedObject var session = UserSession.shared
+    
+    let numberFormatter: NumberFormatter
+
+    init() {
+            numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.minimumFractionDigits = 2
+            numberFormatter.maximumFractionDigits = 2
+    }
+
     var body: some View {
         ZStack{
             QColor.background.ignoresSafeArea()
@@ -18,12 +39,13 @@ struct DashboardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 47, height: 47)
-                        Text("Welcome, Itzel").smallFont.foregroundColor(QColor.white)
+                        Text("Welcome, \(session.account?.user.name ?? "")").smallFont.foregroundColor(QColor.white)
                     }
                     Spacer()
                     VStack {
                         Text("Balance").smallFont.foregroundColor(QColor.white)
-                        Text("$35,000.00").subtitleFont
+                        Text("$\(numberFormatter.string(from: NSNumber(value: session.account?.balance ?? 0)) ?? "0.00")")
+                            .subtitleFont
                     }
                 }
                 //Card
@@ -36,18 +58,19 @@ struct DashboardView: View {
                             }
                             HStack{
                                 Spacer()
-                                Text("$50,000.00")
+                                Text("$\(numberFormatter.string(from: NSNumber(value: session.account?.balance ?? 0)) ?? "0.00")")
                                     .titleFont
+
                             }
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text("0000 0000 0000 0000")
+                                    Text(session.account?.card[0].card.split(every: 4).joined(separator: " ") ?? "")
                                         .bodyFont
                                 }
                                 HStack {
-                                    Text("00/00")
+                                    Text("12/28")
                                         .bodyFont
-                                    Text("000").bodyFont
+                                    Text("543").bodyFont
                                     Spacer()
                                 }
                             }
@@ -56,7 +79,9 @@ struct DashboardView: View {
                     }
                     .padding()
                     HStack{
-                        Text("Itzel Aixa Ramon Alonzo").padding(10)
+                        Text((session.account?.user.name ?? "") + " " + (session.account?.user.lastname ?? ""))
+                            .padding(10)
+
                         Spacer()
                     }
                     .background(QColor.white)

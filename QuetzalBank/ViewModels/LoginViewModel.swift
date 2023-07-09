@@ -47,7 +47,7 @@ class LoginViewModel: ObservableObject {
             let response = try await accountService.getAccountData()
             DispatchQueue.main.async {
                 self.account = response.data
-                self.session.user = self.account?.user
+                self.session.account = self.account
                 print(self.account ?? "")
             }
         } catch {
