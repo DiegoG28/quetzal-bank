@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isUserLoggedIn = false
-
-
+    
+    @ObservedObject var session = UserSession.shared
+    
     var body: some View {
         ZStack {
-            if (isUserLoggedIn) {
-                BankView(isUserLoggedIn: $isUserLoggedIn).padding()
+            if (session.isLoggedIn) {
+                BankView()
             } else {
                 NavigationStack {
-                    LoginView(isUserLoggedIn: $isUserLoggedIn
-                    )
+                    LoginView()
                 }
             }
         }

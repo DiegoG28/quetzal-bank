@@ -9,8 +9,10 @@ import SwiftUI
 
 struct BankView: View {
     @StateObject private var viewModel = BankViewModel()
-    @Binding var isUserLoggedIn: Bool
+    
+    var session = UserSession.shared
     let defaults: UserDefaults = UserDefaults()
+    
     var body: some View {
         List(viewModel.banks, id: \.id) { bank in
             Text(bank.name)
@@ -19,7 +21,7 @@ struct BankView: View {
         }
         
         Button("Salir") {
-            isUserLoggedIn = false
+            session.isLoggedIn = false
         }
     }
 }

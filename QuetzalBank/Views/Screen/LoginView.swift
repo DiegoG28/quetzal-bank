@@ -14,8 +14,6 @@ struct LoginView: View {
     @State private var showRegisterView = false
     @State private var allowFaceID = false
     
-    @Binding var isUserLoggedIn: Bool
-    
     var defaults = UserDefaults.standard
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
@@ -32,6 +30,10 @@ struct LoginView: View {
                     .frame(width: 200, height: 200)
                 
                 
+                if !viewModel.message.isEmpty {
+                    Text(viewModel.message).bodyFont.foregroundColor(QColor.errorText)
+                }
+                
                 TextField("", text: $user.phone, prompt:
                             Text("Phone number")
                     .foregroundColor(QColor.white).bodyFont)
@@ -46,7 +48,7 @@ struct LoginView: View {
                 
                 if defaults.object(forKey: "token") != nil {
                     Toggle(isOn: $allowFaceID, label: {
-                        Text("Use FaceID to log in").smallFont
+                        Text("Use FaceID to log in").smallFont.foregroundColor(QColor.white)
                     })
                     .toggleStyle(CustomToggleStyle())
                 }
@@ -56,14 +58,14 @@ struct LoginView: View {
                     if (allowFaceID) {
                         defaults.set(allowFaceID, forKey: "allowFaceID")
                         Task {
-                            viewModel.isUserLogged = await viewModel.loginByFaceID()
-                            viewModel.checkUserStatus(isUserLoggedIn: &isUserLoggedIn)
+                            await viewModel.loginByFaceID()
+                            viewModel.checkUserStatus()
                         }
                     } else {
                         defaults.removeObject(forKey: "allowFaceID")
                         Task {
                             await viewModel.login(user: user)
-                            viewModel.checkUserStatus(isUserLoggedIn: &isUserLoggedIn)
+                            viewModel.checkUserStatus()
                         }
                     }
                 } label: {
@@ -71,7 +73,7 @@ struct LoginView: View {
                 }
                 .buttonStyle(MainButton())
                 .padding(5)
-                Text("Forgot your password?").smallFont.padding(.bottom, 30)
+                Text("Forgot your password?").smallFont.padding(.bottom, 30).foregroundColor(QColor.white)
                 
                 Button {
                     showRegisterView = true

@@ -31,10 +31,10 @@ extension Text {
     }
     
     var bodyFont: Text {
-        self.font(.NunitoRegular(size: 16)).foregroundColor(QColor.white)
+        self.font(.NunitoRegular(size: 16))
     }
     
     var smallFont: Text {
-        self.font(.NunitoRegular(size: 14)).foregroundColor(QColor.white)
+        self.font(.NunitoRegular(size: 14))
     }
 }

@@ -18,11 +18,11 @@ struct DashboardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 47, height: 47)
-                        Text("Welcome, Itzel").smallFont
+                        Text("Welcome, Itzel").smallFont.foregroundColor(QColor.white)
                     }
                     Spacer()
                     VStack {
-                        Text("Balance").smallFont
+                        Text("Balance").smallFont.foregroundColor(QColor.white)
                         Text("$35,000.00").subtitleFont
                     }
                 }
@@ -70,7 +70,7 @@ struct DashboardView: View {
                         }) {
                             Image(systemName: "arrow.up")
                         }.buttonStyle(IconButton())
-                        Text("Transfer").smallFont
+                        Text("Transfer").smallFont.foregroundColor(QColor.white)
                     }
                     Spacer()
                     VStack {
@@ -78,7 +78,7 @@ struct DashboardView: View {
                         }) {
                             Image(systemName: "arrow.down")
                         }.buttonStyle(IconButton())
-                        Text("Receive").smallFont
+                        Text("Receive").smallFont.foregroundColor(QColor.white)
                     }
                     Spacer()
                     VStack {
@@ -86,40 +86,40 @@ struct DashboardView: View {
                         }) {
                             Image(systemName: "arrow.left.arrow.right")
                         }.buttonStyle(IconButton())
-                        Text("Movements").smallFont
+                        Text("Movements").smallFont.foregroundColor(QColor.white)
                     }
                 }
                 //Movimientos recientes
                 VStack {
                         HStack{
                             VStack(alignment: .leading){
-                                Text("AppleStore").smallFont
-                                Text("5:09").smallFont
+                                Text("AppleStore").smallFont.foregroundColor(QColor.white)
+                                Text("5:09").smallFont.foregroundColor(QColor.white)
                             }
                             Spacer()
-                            Text("-$9,546.00").smallFont
+                            Text("-$9,546.00").smallFont.foregroundColor(QColor.white)
                         }
                         .padding(10)
                         .cornerRadius(8)
                         .background(QColor.textFieldBackground)
                     HStack{
                         VStack(alignment: .leading) {
-                            Text("AppleStore").smallFont
-                            Text("5:09").smallFont
+                            Text("AppleStore").smallFont.foregroundColor(QColor.white)
+                            Text("5:09").smallFont.foregroundColor(QColor.white)
                         }
                         Spacer()
-                        Text("-$9,546.00").smallFont
+                        Text("-$9,546.00").smallFont.foregroundColor(QColor.white)
                     }
                     .padding(10)
                     .cornerRadius(8)
                     .background(QColor.textFieldBackground)
                     HStack{
                         VStack(alignment: .leading) {
-                            Text("AppleStore").smallFont
-                            Text("5:09").smallFont
+                            Text("AppleStore").smallFont.foregroundColor(QColor.white)
+                            Text("5:09").smallFont.foregroundColor(QColor.white)
                         }
                         Spacer()
-                        Text("-$9,546.00").smallFont
+                        Text("-$9,546.00").smallFont.foregroundColor(QColor.white)
                     }
                     .padding(10)
                     .cornerRadius(8)

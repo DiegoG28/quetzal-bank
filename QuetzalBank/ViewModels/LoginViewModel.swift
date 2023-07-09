@@ -10,29 +10,29 @@ import LocalAuthentication
 
 
 class LoginViewModel: ObservableObject {
+    private var accountService = AccountService()
+    private var authService = AuthService()
+    
     @Published var account: AccountModel?
     @Published var message: String = ""
     @Published var accessToken: String?
-    @Published var isUserLogged: Bool = false
     
+    var session = UserSession.shared
     let defaults = UserDefaults.standard
-    
-    private var accountService = AccountService()
-    private var authService = AuthService()
     
     func login(user: UserLoginRequest) async {
         do {
             let response = try await authService.logInUser(user: user)
             DispatchQueue.main.async {
                 if (response.access_token == nil) {
-                    self.message = "Incorrect credentials."
+                    self.message = "Incorrect phone number or password"
                     return
                 }
                 
                 self.accessToken = response.access_token
-                self.isUserLogged = true
+                self.session.token = self.accessToken
+                self.session.isLoggedIn = true
                 self.defaults.set(self.accessToken, forKey: "token")
-                print(self.isUserLogged)
             }
         } catch {
             DispatchQueue.main.async {
@@ -47,6 +47,7 @@ class LoginViewModel: ObservableObject {
             let response = try await accountService.getAccountData()
             DispatchQueue.main.async {
                 self.account = response.data
+                self.session.user = self.account?.user
                 print(self.account ?? "")
             }
         } catch {
@@ -57,7 +58,7 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    func loginByFaceID() async -> Bool {
+    func loginByFaceID() async {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
@@ -71,17 +72,13 @@ class LoginViewModel: ObservableObject {
                     }
                 }
             }
-            return success
+            self.session.isLoggedIn = true
         }
         print("Biometric unavailable: \(error?.localizedDescription ?? "No error")")
-        return false
     }
     
-    func checkUserStatus(isUserLoggedIn: inout Bool) {
-        print("Checking status")
-        print(self.isUserLogged)
-        if (self.isUserLogged) {
-            isUserLoggedIn = true
+    func checkUserStatus() {
+        if (self.session.isLoggedIn) {
             Task {
                 await fetchAccountData()
             }
