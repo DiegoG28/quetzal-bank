@@ -12,12 +12,11 @@ struct LoginView: View {
     
     @State private var user = UserLoginRequest(phone: "", password:  "")
     @State private var showRegisterView = false
-    @State private var active = false
+    @State private var allowFaceID = false
     
     @Binding var isUserLoggedIn: Bool
-    @Binding var emailText: String
-
     
+    var defaults = UserDefaults.standard
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
                                   endPoint: .bottomTrailing)
@@ -32,7 +31,7 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
                 
-
+                
                 TextField("", text: $user.phone, prompt:
                             Text("Phone number")
                     .foregroundColor(QColor.white).bodyFont)
@@ -45,21 +44,28 @@ struct LoginView: View {
                 .textFieldStyle(CustomTextFieldStyle())
                 .padding(.bottom, 20)
                 
-                Toggle(isOn: $active, label: {
+                Toggle(isOn: $allowFaceID, label: {
                     Text("Use FaceID to log in").smallFont
                 })
                 .toggleStyle(CustomToggleStyle())
                 
                 Button {
-                    Task {
-                        await viewModel.login(user: user)
-                        if (viewModel.accessToken != nil) {
-                            isUserLoggedIn = true
-                            await viewModel.fetchAccountData()
+                    print(allowFaceID)
+                    if (allowFaceID) {
+                        defaults.set(allowFaceID, forKey: "allowFaceID")
+                        Task {
+                            viewModel.isUserLogged = await viewModel.loginByFaceID()
+                            viewModel.checkUserStatus(isUserLoggedIn: &isUserLoggedIn)
+                        }
+                    } else {
+                        defaults.removeObject(forKey: "allowFaceID")
+                        Task {
+                            await viewModel.login(user: user)
+                            viewModel.checkUserStatus(isUserLoggedIn: &isUserLoggedIn)
                         }
                     }
                 } label: {
-                    Text("Iniciar sesión").frame(maxWidth: .infinity)
+                    Text("Sign in").frame(maxWidth: .infinity)
                 }
                 .buttonStyle(MainButton())
                 .padding(5)
@@ -79,6 +85,8 @@ struct LoginView: View {
                 RegisterView()
             }
             Spacer()
+        }.onAppear {
+            allowFaceID = defaults.bool(forKey: "allowFaceId")
         }
     }
 }

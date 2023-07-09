@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isUserLoggedIn = false
-    @State private var emailText = ""
 
 
     var body: some View {
@@ -18,7 +17,7 @@ struct ContentView: View {
                 BankView(isUserLoggedIn: $isUserLoggedIn).padding()
             } else {
                 NavigationStack {
-                    LoginView(isUserLoggedIn: $isUserLoggedIn, emailText: $emailText
+                    LoginView(isUserLoggedIn: $isUserLoggedIn
                     )
                 }
             }

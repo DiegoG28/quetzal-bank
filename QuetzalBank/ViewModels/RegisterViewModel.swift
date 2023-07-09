@@ -8,14 +8,9 @@
 import Foundation
 
 class RegisterViewModel: ObservableObject {
-    @Published var user: UserModel?
     @Published var message: String = ""
     @Published var errors: [String] = []
-    @Published var accessToken: String?
-    @Published var account: AccountModel?
-    let defaults = UserDefaults.standard
     
-    private var accountService = AccountService()
     private var authService = AuthService()
     
     func register(user: UserRegisterRequest) async {
@@ -28,8 +23,6 @@ class RegisterViewModel: ObservableObject {
             }
             let response = try await authService.registerUser(user: user)
             DispatchQueue.main.async {
-                // La información del usuario se recibe al registrarse, de cualquier forma se hace una petición a accounts/me en LoginView para obtener los datos completos.
-                self.user = response.data
                 self.message = response.message ?? "Usuario registrado"
             }
         } catch {

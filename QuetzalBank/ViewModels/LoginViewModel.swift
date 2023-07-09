@@ -6,45 +6,33 @@
 //
 
 import Foundation
+import LocalAuthentication
+
 
 class LoginViewModel: ObservableObject {
-    @Published var user: UserModel?
-    @Published var message: String = ""
-    @Published var errors: [String] = []
-    @Published var accessToken: String?
     @Published var account: AccountModel?
+    @Published var message: String = ""
+    @Published var accessToken: String?
+    @Published var isUserLogged: Bool = false
+    
     let defaults = UserDefaults.standard
     
     private var accountService = AccountService()
     private var authService = AuthService()
     
-    func register(user: UserRegisterRequest) async {
-        do {
-            DispatchQueue.main.async {
-                self.errors = []
-            }
-            if (!userDataIsValid(user)) {
-                return
-            }
-            let response = try await authService.registerUser(user: user)
-            DispatchQueue.main.async {
-                self.user = response.data
-                self.message = response.message ?? "Usuario registrado"
-            }
-        } catch {
-            DispatchQueue.main.async {
-                self.message = "Error al registrarse: \(error)"
-            }
-        }
-    }
-    
     func login(user: UserLoginRequest) async {
         do {
             let response = try await authService.logInUser(user: user)
             DispatchQueue.main.async {
-                self.message = response.message ?? "Se inició sesión correctamente"
+                if (response.access_token == nil) {
+                    self.message = "Incorrect credentials."
+                    return
+                }
+                
                 self.accessToken = response.access_token
+                self.isUserLogged = true
                 self.defaults.set(self.accessToken, forKey: "token")
+                print(self.isUserLogged)
             }
         } catch {
             DispatchQueue.main.async {
@@ -69,40 +57,34 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    func userDataIsValid(_ user: UserRegisterRequest) -> Bool {
-        var errors: [String] = []
-        if (user.rfc.count != 13) {
-            errors.append("El RFC debe contener 13 caracteres")
-        }
-        if (user.name.count > 50) {
-            errors.append("El nombre debe tener 50 o menos caracteres")
-        }
-        if (user.lastname.count > 50) {
-            errors.append("El apellido debe tener 50 o menos caracteres")
-        }
-        if(!isValidEmailAddr(strToValidate: user.email)) {
-            errors.append("El email es inválido")
-        }
-        if(user.phone.count != 10) {
-            errors.append("El teléfono celular debe contener 10 dígitos")
-        }
-        if(user.password.count < 8) {
-            errors.append("La contraseña debe contener mínimo 8 caracteres")
-        }
-        if (errors.count > 0) {
-            DispatchQueue.main.async {
-                self.errors = errors
+    func loginByFaceID() async -> Bool {
+        let context = LAContext()
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let success = await withCheckedContinuation { continuation in
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Acceder con FaceID") { success, error in
+                    if success {
+                        continuation.resume(returning: true)
+                    } else {
+                        print("Auth failed: \(error?.localizedDescription ?? "No error")")
+                        continuation.resume(returning: false)
+                    }
+                }
             }
-            return false
+            return success
         }
-        return true
+        print("Biometric unavailable: \(error?.localizedDescription ?? "No error")")
+        return false
     }
     
-    func isValidEmailAddr(strToValidate: String) -> Bool {
-      let emailValidationRegex = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})*$"  // 1
-
-      let emailValidationPredicate = NSPredicate(format: "SELF MATCHES %@", emailValidationRegex)  // 2
-
-      return emailValidationPredicate.evaluate(with: strToValidate)  // 3
+    func checkUserStatus(isUserLoggedIn: inout Bool) {
+        print("Checking status")
+        print(self.isUserLogged)
+        if (self.isUserLogged) {
+            isUserLoggedIn = true
+            Task {
+                await fetchAccountData()
+            }
+        }
     }
 }

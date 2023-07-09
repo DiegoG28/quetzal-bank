@@ -20,7 +20,6 @@ struct BankView: View {
         
         Button("Salir") {
             isUserLoggedIn = false
-            defaults.removeObject(forKey: "token")
         }
     }
 }
