@@ -14,19 +14,20 @@ struct Movements: View {
             Text("Movements")
                 .titleFont
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 30)
+                .padding(.bottom, 20)
             Text("Mayo 2023")
                 .subtitleFont
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(3)
+                .padding(.bottom, 10)
             GroupBox{
                 HStack{
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 50)
                         .foregroundColor(.gray)
+                        .padding(.trailing, 5)
                     
-                    VStack{
+                    VStack(alignment: .leading){
                         Text("APPLE")
                         Text("15:56")
                     }.frame(maxWidth: .infinity, alignment: .leading)
@@ -34,14 +35,14 @@ struct Movements: View {
                 
                 }.frame(maxWidth: .infinity,maxHeight: 50)
                     .foregroundColor(QColor.white)
-                
-              
-                
+
                    
             }.groupBoxStyle(TransparentGroupBox())
             Spacer()
            
-        }.frame(maxHeight: .infinity)
+        }
+        .padding()
+        .frame(maxHeight: .infinity)
         .background(Color("Background"))
         
     }
