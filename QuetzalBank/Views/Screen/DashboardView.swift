@@ -17,10 +17,27 @@ extension String {
     }
 }
 
+struct RoundedCorner: Shape {
+    var corners: UIRectCorner
+    var radius: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+
+        return Path(path.cgPath)
+    }
+}
+
 struct DashboardView: View {
     @ObservedObject var session = UserSession.shared
-    
     let numberFormatter: NumberFormatter
+    let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
+                                  startPoint: .topLeading,
+                                  endPoint: .bottomTrailing)
 
     init() {
             numberFormatter = NumberFormatter()
@@ -50,46 +67,50 @@ struct DashboardView: View {
                 }
                 //Card
                 VStack {
+                    //Encierra todo
                     VStack {
-                        VStack {
-                            HStack {
-                                Spacer()
-                                Image(systemName: "eye.slash").foregroundColor(QColor.white)
-                            }
-                            HStack{
-                                Spacer()
-                                Text("$\(numberFormatter.string(from: NSNumber(value: session.account?.balance ?? 0)) ?? "0.00")")
-                                    .titleFont
-
-                            }
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(session.account?.card[0].card.split(every: 4).joined(separator: " ") ?? "")
-                                        .bodyFont
-                                }
-                                HStack {
-                                    Text("12/28")
-                                        .bodyFont
-                                    Text("543").bodyFont
-                                    Spacer()
-                                }
-                            }
-                            
+                        HStack {
+                            Spacer()
+                            Image(systemName: "eye.slash").foregroundColor(QColor.white)
+                        }.padding(.bottom, 5)
+                        HStack{
+                            Spacer()
+                            Text("$\(numberFormatter.string(from: NSNumber(value: session.account?.balance ?? 0)) ?? "0.00")")
+                                .titleFont
                         }
+                        VStack(alignment: .leading) {
+                                Text(session.account?.card[0].card.split(every: 4).joined(separator: " ") ?? "0000 0000 0000 0000")
+                                    .bodyFont
+                                    .foregroundColor(QColor.white)
+                            HStack {
+                                Text("12/28")
+                                    .bodyFont
+                                    .foregroundColor(QColor.white)
+                                    .padding(.trailing, 40)
+                                Text("543")
+                                    .bodyFont
+                                    .foregroundColor(QColor.white)
+                                Spacer()
+                            }
+                        }
+                        
                     }
                     .padding()
+                    .background(gradient)
+                    .clipShape(RoundedCorner(corners: [.topLeft , .topRight], radius: 16))
+                    
                     HStack {
                         let name = session.account?.user.name ?? "Itzel Aixa"
                         let lastName = session.account?.user.lastname ?? "Ramon Alonzo"
                         
                         Text("\(name) \(lastName)")
                             .padding(10)
-
+                        
                         Spacer()
                     }
                     .background(QColor.white)
-                }
-                .background(QColor.gradientText)
+                    .clipShape(RoundedCorner(corners: [.bottomLeft , .bottomRight], radius: 16))
+                }.padding(.bottom, 10)
                 
                 //Botones
                 HStack {
