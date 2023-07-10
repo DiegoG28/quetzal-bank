@@ -78,8 +78,11 @@ struct DashboardView: View {
                         }
                     }
                     .padding()
-                    HStack{
-                        Text((session.account?.user.name ?? "") + " " + (session.account?.user.lastname ?? ""))
+                    HStack {
+                        let name = session.account?.user.name ?? "Itzel Aixa"
+                        let lastName = session.account?.user.lastname ?? "Ramon Alonzo"
+                        
+                        Text("\(name) \(lastName)")
                             .padding(10)
 
                         Spacer()

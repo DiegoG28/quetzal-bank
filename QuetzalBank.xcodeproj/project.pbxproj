@@ -23,7 +23,7 @@
 		F1A62F072A5763AE009887CF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62F062A5763AE009887CF /* Font.swift */; };
 		F1A62F092A5772F5009887CF /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62F082A5772F5009887CF /* GradientButton.swift */; };
 		F1B224B42A589A0100F4C4FA /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B224B32A589A0100F4C4FA /* ToggleStyle.swift */; };
-		F1B224B62A58AB3B00F4C4FA /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B224B52A58AB3B00F4C4FA /* Dashboard.swift */; };
+		F1B224B62A58AB3B00F4C4FA /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B224B52A58AB3B00F4C4FA /* DashboardView.swift */; };
 		F1B224B82A58AB7500F4C4FA /* IconButon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B224B72A58AB7500F4C4FA /* IconButon.swift */; };
 		F1E34AC52A57227E00B98581 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34AC42A57227E00B98581 /* TransferView.swift */; };
 		F1E34AC72A57228A00B98581 /* MovementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34AC62A57228A00B98581 /* MovementsView.swift */; };
@@ -87,7 +87,7 @@
 		F1A62F062A5763AE009887CF /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F1A62F082A5772F5009887CF /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		F1B224B32A589A0100F4C4FA /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
-		F1B224B52A58AB3B00F4C4FA /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		F1B224B52A58AB3B00F4C4FA /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		F1B224B72A58AB7500F4C4FA /* IconButon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButon.swift; sourceTree = "<group>"; };
 		F1E34AC42A57227E00B98581 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
 		F1E34AC62A57228A00B98581 /* MovementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsView.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				F1E34AC62A57228A00B98581 /* MovementsView.swift */,
 				F1E34AC82A57229A00B98581 /* ProfileView.swift */,
 				F1E34ACA2A5722A900B98581 /* ReceiveView.swift */,
-				F1B224B52A58AB3B00F4C4FA /* Dashboard.swift */,
+				F1B224B52A58AB3B00F4C4FA /* DashboardView.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				F1E34AC72A57228A00B98581 /* MovementsView.swift in Sources */,
 				F1F54FC82A4139350061EBC8 /* AccountService.swift in Sources */,
 				F110251C2A5738CF002E9163 /* MainButton.swift in Sources */,
-				F1B224B62A58AB3B00F4C4FA /* Dashboard.swift in Sources */,
+				F1B224B62A58AB3B00F4C4FA /* DashboardView.swift in Sources */,
 				F15E9E4A2A54E9FC0094AA72 /* CustomTextField.swift in Sources */,
 				F1B224B82A58AB7500F4C4FA /* IconButon.swift in Sources */,
 				F169FD9C2A5395050076EFFE /* UserLogInRequest.swift in Sources */,
