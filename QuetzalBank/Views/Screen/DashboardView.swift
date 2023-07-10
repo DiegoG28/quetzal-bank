@@ -38,7 +38,7 @@ struct DashboardView: View {
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
                                   endPoint: .bottomTrailing)
-
+    
     init() {
             numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .decimal
@@ -51,7 +51,7 @@ struct DashboardView: View {
             QColor.background.ignoresSafeArea()
             VStack {
                 HStack{
-                    VStack{
+                    VStack (alignment: .leading){
                         Image("profile")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -175,6 +175,13 @@ struct DashboardView: View {
                     .background(QColor.textFieldBackground)
                 }
                 Spacer()
+                Button {
+                    session.isLoggedIn = false
+                } label: {
+                    Text("Sign out").frame(maxWidth: .infinity)
+                }
+                .buttonStyle(MainButton())
+                .padding(5)
             }.padding()
         }
     
