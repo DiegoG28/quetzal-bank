@@ -40,17 +40,12 @@ struct Transfer: View {
                     Button{
                        
                     } label: {
-                        Text("Transfer").titleFont
+                        Text("Transfer").subtitleFont
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(QColor.white)
-                            .padding(10)
-                            .background(QColor.textLabelBackground)
-                            .cornerRadius(10)
-                    }
+                    }.buttonStyle(MainButton())
                 }
             }
-            
-            
+            .padding()
         }
     }
 }
