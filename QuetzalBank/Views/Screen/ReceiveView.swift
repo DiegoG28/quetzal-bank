@@ -1,20 +1,57 @@
 //
-//  ReceiveView.swift
+//  PantallaRecibir.swift
 //  QuetzalBank
 //
-//  Created by Diego Gutiérrez on 06/07/23.
+//  Created by imac 07 on 25/05/23.
 //
 
 import SwiftUI
 
-struct ReceiveView: View {
+struct PantallaRecibir: View {
+    @State var Beneficiary: String?
+    @State  var CLABE: String?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            ZStack(alignment: .topLeading) {
+                QColor.background.ignoresSafeArea()
+                VStack(alignment: .leading){
+                    Text("Receive").titleFont.padding(.bottom,10)
+                        .foregroundColor(QColor.white)
+                    Text("These are the data you must share to receive money to this account:").bodyFont.padding(.bottom,20)
+                        .foregroundColor(QColor.white)
+                    Text("Beneficiary:").bodyFont
+                        .foregroundColor(QColor.white).padding(.bottom,10)
+                    Button(action: {
+                        
+                    }) {
+                        Text("Alex Francisco Torres Hernandez").bodyFont
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(QColor.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                          
+                    }
+                    .padding(.bottom,20)
+                    Text("CLABE:").bodyFont.padding(10)
+                        .foregroundColor(QColor.white)
+                    Button(action: {
+                        
+                    }) {
+                        Text("1234567890123456678").bodyFont
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(QColor.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                    }
+            }
+                .padding()
+        }
     }
 }
 
-struct ReceiveView_Previews: PreviewProvider {
+struct PantallaRecibir_Previews: PreviewProvider {
     static var previews: some View {
-        ReceiveView()
+        PantallaRecibir()
     }
 }
