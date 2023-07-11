@@ -58,7 +58,7 @@ class LoginViewModel: ObservableObject {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let success = await withCheckedContinuation { continuation in
+            _ = await withCheckedContinuation { continuation in
                 context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Acceder con FaceID") { success, error in
                     if success {
                         continuation.resume(returning: true)
@@ -68,7 +68,9 @@ class LoginViewModel: ObservableObject {
                     }
                 }
             }
-            self.session.isLoggedIn = true
+            DispatchQueue.main.async {
+                self.session.isLoggedIn = true
+            }
         }
         print("Biometric unavailable: \(error?.localizedDescription ?? "No error")")
     }
