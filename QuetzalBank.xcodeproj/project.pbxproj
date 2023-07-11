@@ -18,6 +18,8 @@
 		F170E22B2A5792FF00639900 /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170E22A2A5792FE00639900 /* TextFieldStyle.swift */; };
 		F1724F012A5A4939003794B5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1724F002A5A4939003794B5 /* AuthService.swift */; };
 		F1724F032A5A4A76003794B5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1724F022A5A4A76003794B5 /* RegisterViewModel.swift */; };
+		F1A62AF42A5DBDAE004BBE1F /* MovementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62AF32A5DBDAE004BBE1F /* MovementModel.swift */; };
+		F1A62AF62A5DBDB7004BBE1F /* TransferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62AF52A5DBDB7004BBE1F /* TransferenceRequest.swift */; };
 		F1A62F032A5761DA009887CF /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1A62F012A5761DA009887CF /* Nunito-SemiBold.ttf */; };
 		F1A62F042A5761DA009887CF /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1A62F022A5761DA009887CF /* Nunito-Regular.ttf */; };
 		F1A62F072A5763AE009887CF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62F062A5763AE009887CF /* Font.swift */; };
@@ -30,10 +32,8 @@
 		F1E34AC92A57229A00B98581 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34AC82A57229A00B98581 /* ProfileView.swift */; };
 		F1E34ACB2A5722A900B98581 /* ReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34ACA2A5722A900B98581 /* ReceiveView.swift */; };
 		F1E34ACD2A572B6A00B98581 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34ACC2A572B6A00B98581 /* UserSession.swift */; };
-		F1E34ACF2A57301A00B98581 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E34ACE2A57301A00B98581 /* User.swift */; };
 		F1E39B532A4362F60062F56E /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B522A4362F60062F56E /* APIResponse.swift */; };
 		F1E39B552A43668F0062F56E /* UserRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B542A43668F0062F56E /* UserRegisterRequest.swift */; };
-		F1E39B572A4366FF0062F56E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E39B562A4366FF0062F56E /* APIService.swift */; };
 		F1F54F8C2A412D2E0061EBC8 /* QuetzalBankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54F8B2A412D2E0061EBC8 /* QuetzalBankApp.swift */; };
 		F1F54F8E2A412D2E0061EBC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54F8D2A412D2E0061EBC8 /* ContentView.swift */; };
 		F1F54F902A412D2E0061EBC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1F54F8F2A412D2E0061EBC8 /* Assets.xcassets */; };
@@ -81,6 +81,8 @@
 		F170E22A2A5792FE00639900 /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		F1724F002A5A4939003794B5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F1724F022A5A4A76003794B5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F1A62AF32A5DBDAE004BBE1F /* MovementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementModel.swift; sourceTree = "<group>"; };
+		F1A62AF52A5DBDB7004BBE1F /* TransferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferenceRequest.swift; sourceTree = "<group>"; };
 		F1A62F012A5761DA009887CF /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		F1A62F022A5761DA009887CF /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		F1A62F052A5762E1009887CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -94,10 +96,8 @@
 		F1E34AC82A57229A00B98581 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F1E34ACA2A5722A900B98581 /* ReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveView.swift; sourceTree = "<group>"; };
 		F1E34ACC2A572B6A00B98581 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
-		F1E34ACE2A57301A00B98581 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1E39B522A4362F60062F56E /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F1E39B542A43668F0062F56E /* UserRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterRequest.swift; sourceTree = "<group>"; };
-		F1E39B562A4366FF0062F56E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F1F54F882A412D2E0061EBC8 /* QuetzalBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuetzalBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F54F8B2A412D2E0061EBC8 /* QuetzalBankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuetzalBankApp.swift; sourceTree = "<group>"; };
 		F1F54F8D2A412D2E0061EBC8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -178,6 +178,15 @@
 				F15E9E492A54E9FC0094AA72 /* CustomTextField.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		F1A62AF22A5DBD9E004BBE1F /* Transferences */ = {
+			isa = PBXGroup;
+			children = (
+				F1A62AF32A5DBDAE004BBE1F /* MovementModel.swift */,
+				F1A62AF52A5DBDB7004BBE1F /* TransferenceRequest.swift */,
+			);
+			path = Transferences;
 			sourceTree = "<group>";
 		};
 		F1A62EFE2A57600B009887CF /* Fonts */ = {
@@ -264,10 +273,10 @@
 		F1F54FB52A4133770061EBC8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F1A62AF22A5DBD9E004BBE1F /* Transferences */,
 				F1004DB92A57A59E00ACCC69 /* AccountModel.swift */,
 				F1E39B512A4362480062F56E /* User */,
 				F1F54FC12A4136040061EBC8 /* BankModel.swift */,
-				F1E39B522A4362F60062F56E /* APIResponse.swift */,
 				F1004DBB2A57A5D300ACCC69 /* CardModel.swift */,
 			);
 			path = Models;
@@ -297,7 +306,6 @@
 			children = (
 				F1F54FB92A4133D30061EBC8 /* BankService.swift */,
 				F1F54FC72A4139350061EBC8 /* AccountService.swift */,
-				F1E39B562A4366FF0062F56E /* APIService.swift */,
 				F1724F002A5A4939003794B5 /* AuthService.swift */,
 			);
 			path = Services;
@@ -306,11 +314,11 @@
 		F1F54FBB2A4134BB0061EBC8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F1E39B522A4362F60062F56E /* APIResponse.swift */,
 				F1A62EFE2A57600B009887CF /* Fonts */,
 				F11025182A5737F7002E9163 /* Styles */,
 				F1F54FBC2A4134CC0061EBC8 /* APIConfig.swift */,
 				F1E34ACC2A572B6A00B98581 /* UserSession.swift */,
-				F1E34ACE2A57301A00B98581 /* User.swift */,
 				F1A62F062A5763AE009887CF /* Font.swift */,
 				F110251D2A573A26002E9163 /* QColor.swift */,
 			);
@@ -469,21 +477,21 @@
 				F169FD9C2A5395050076EFFE /* UserLogInRequest.swift in Sources */,
 				F1E39B532A4362F60062F56E /* APIResponse.swift in Sources */,
 				F1E34AC92A57229A00B98581 /* ProfileView.swift in Sources */,
-				F1E39B572A4366FF0062F56E /* APIService.swift in Sources */,
 				F1F54FCA2A413B140061EBC8 /* UserModel.swift in Sources */,
 				F1E34ACB2A5722A900B98581 /* ReceiveView.swift in Sources */,
 				F1A62F092A5772F5009887CF /* GradientButton.swift in Sources */,
 				F1F54FC42A4137470061EBC8 /* BankViewModel.swift in Sources */,
+				F1A62AF62A5DBDB7004BBE1F /* TransferenceRequest.swift in Sources */,
 				F1E34ACD2A572B6A00B98581 /* UserSession.swift in Sources */,
 				F1A62F072A5763AE009887CF /* Font.swift in Sources */,
 				F1F54FD02A413C840061EBC8 /* RegisterView.swift in Sources */,
+				F1A62AF42A5DBDAE004BBE1F /* MovementModel.swift in Sources */,
 				F1724F012A5A4939003794B5 /* AuthService.swift in Sources */,
 				F1F54F8C2A412D2E0061EBC8 /* QuetzalBankApp.swift in Sources */,
 				F1004DBA2A57A59E00ACCC69 /* AccountModel.swift in Sources */,
 				F170E2292A577CDD00639900 /* SecondaryButton.swift in Sources */,
 				F1E34AC52A57227E00B98581 /* TransferView.swift in Sources */,
 				F1F54FC62A4138030061EBC8 /* BankView.swift in Sources */,
-				F1E34ACF2A57301A00B98581 /* User.swift in Sources */,
 				F1B224B42A589A0100F4C4FA /* ToggleStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

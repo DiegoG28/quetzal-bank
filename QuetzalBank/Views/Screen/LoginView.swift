@@ -16,6 +16,7 @@ struct LoginView: View {
     @State private var showRegisterView = false
     @State private var allowFaceID = false
     
+    //We use defaults so we can check the token status (line: 52) even if the user has closed and opened the application again.
     var defaults = UserDefaults.standard
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
@@ -56,15 +57,12 @@ struct LoginView: View {
                 }
                 
                 Button {
-                    print(allowFaceID)
                     if (allowFaceID) {
-                        defaults.set(allowFaceID, forKey: "allowFaceID")
                         Task {
                             await viewModel.loginByFaceID()
                             viewModel.checkUserStatus()
                         }
                     } else {
-                        defaults.removeObject(forKey: "allowFaceID")
                         Task {
                             await viewModel.login(user: user)
                             viewModel.checkUserStatus()
@@ -91,8 +89,6 @@ struct LoginView: View {
                 RegisterView()
             }
             Spacer()
-        }.onAppear {
-            allowFaceID = defaults.bool(forKey: "allowFaceId")
         }
     }
 }

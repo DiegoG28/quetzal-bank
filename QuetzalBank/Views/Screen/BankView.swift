@@ -11,7 +11,6 @@ struct BankView: View {
     @StateObject private var viewModel = BankViewModel()
     
     var session = UserSession.shared
-    let defaults: UserDefaults = UserDefaults()
     
     var body: some View {
         List(viewModel.banks, id: \.id) { bank in

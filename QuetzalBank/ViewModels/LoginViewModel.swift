@@ -13,9 +13,7 @@ class LoginViewModel: ObservableObject {
     private var accountService = AccountService()
     private var authService = AuthService()
     
-    @Published var account: AccountModel?
     @Published var message: String = ""
-    @Published var accessToken: String?
     
     var session = UserSession.shared
     let defaults = UserDefaults.standard
@@ -29,10 +27,9 @@ class LoginViewModel: ObservableObject {
                     return
                 }
                 
-                self.accessToken = response.access_token
-                self.session.token = self.accessToken
+                self.session.token = response.access_token
+                self.defaults.set(response.access_token, forKey: "token")
                 self.session.isLoggedIn = true
-                self.defaults.set(self.accessToken, forKey: "token")
             }
         } catch {
             DispatchQueue.main.async {
@@ -46,9 +43,8 @@ class LoginViewModel: ObservableObject {
         do {
             let response = try await accountService.getAccountData()
             DispatchQueue.main.async {
-                self.account = response.data
-                self.session.account = self.account
-                print(self.account ?? "")
+                self.session.account = response.data
+                print(self.session.account ?? "")
             }
         } catch {
             DispatchQueue.main.async {
