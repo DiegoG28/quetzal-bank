@@ -14,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if (session.isLoggedIn) {
-                DashboardView()
+                NavigationStack {
+                    DashboardView()
+                }
             } else {
                 NavigationStack {
                     LoginView()

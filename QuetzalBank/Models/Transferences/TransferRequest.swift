@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TransferenceRequest: Codable {
-    let user_account: String
-    let receptor_account: String
-    let amount: Int
+struct TransferRequest: Codable {
+    var user_account: String
+    var receptor_account: String
+    var amount: Float
 }

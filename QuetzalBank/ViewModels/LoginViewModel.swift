@@ -44,6 +44,7 @@ class LoginViewModel: ObservableObject {
             let response = try await accountService.getAccountData()
             DispatchQueue.main.async {
                 self.session.account = response.data
+                self.session.account?.card.append(CardModel(id: 90, id_account: 90, card: "1985908594098345", card_account: "198094857890098911", status: 1))
                 print(self.session.account ?? "")
             }
         } catch {

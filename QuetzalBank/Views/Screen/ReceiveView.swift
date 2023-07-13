@@ -10,6 +10,8 @@ import SwiftUI
 struct PantallaRecibir: View {
     @State var Beneficiary: String?
     @State  var CLABE: String?
+    @State private var activeButtonIndex: Int = 0
+        let buttonTitles = ["Alex", "Francisco", "Torres", "Hernandez"]
     var body: some View {
             ZStack(alignment: .topLeading) {
                 QColor.background.ignoresSafeArea()
@@ -44,6 +46,21 @@ struct PantallaRecibir: View {
                             .background(QColor.textLabelBackground)
                             .cornerRadius(10)
                     }
+                    
+                    TabView(selection: $activeButtonIndex) {
+                                    ForEach(0..<buttonTitles.count, id: \.self) { index in
+                                        Text(buttonTitles[index])
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .foregroundColor(Color.white)
+                                            .padding(10)
+                                            .background(Color.red)
+                                            .cornerRadius(10)
+                                            .tag(index)
+                                    }
+                                }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                
+                    Text("Active button value: \(buttonTitles[activeButtonIndex])").foregroundColor(.white)
             }
                 .padding()
         }

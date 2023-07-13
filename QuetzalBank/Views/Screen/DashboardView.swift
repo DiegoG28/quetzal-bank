@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-extension String {
-    func split(every chunkSize: Int) -> [String] {
-        stride(from: 0, to: self.count, by: chunkSize).map {
-            let start = self.index(self.startIndex, offsetBy: $0)
-            let end = self.index(start, offsetBy: chunkSize, limitedBy: self.endIndex) ?? self.endIndex
-            return String(self[start..<end])
-        }
-    }
-}
-
 struct RoundedCorner: Shape {
     var corners: UIRectCorner
     var radius: CGFloat
@@ -33,7 +23,13 @@ struct RoundedCorner: Shape {
 }
 
 struct DashboardView: View {
-    @ObservedObject var session = UserSession.shared
+    @ObservedObject private var session = UserSession.shared
+    @ObservedObject private var viewModel = LoginViewModel()
+    
+    @State private var isRefreshing = false
+    @State private var showMovementsView = false
+    @State private var showTransferView = false
+
     let numberFormatter: NumberFormatter
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
                                   startPoint: .topLeading,
@@ -47,8 +43,30 @@ struct DashboardView: View {
     }
 
     var body: some View {
-        ZStack{
+        ZStack {
             QColor.background.ignoresSafeArea()
+            // PULL TO REFESH
+            PullToRefresh(isRefreshing: $isRefreshing) {
+                    }
+                    .onAppear {
+                        
+                        Task {
+                            await viewModel.fetchAccountData() // Cargar los datos cuando se abre la vista
+                        }
+                        
+                    }
+                    .onChange(of: isRefreshing) { newValue in
+                        if newValue {
+                            Task {
+                                await viewModel.fetchAccountData() // Cargar los datos cuando se refresca
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    isRefreshing = false // Detener el refresco después de 1 segundo
+                                }
+                            }
+                            
+                        }
+                    }
+            // VIEW CONTENT
             VStack {
                 HStack{
                     VStack (alignment: .leading){
@@ -79,7 +97,7 @@ struct DashboardView: View {
                                 .titleFont
                         }
                         VStack(alignment: .leading) {
-                                Text(session.account?.card[0].card.split(every: 4).joined(separator: " ") ?? "0000 0000 0000 0000")
+                                Text(session.account?.card[0].card.splitCard(every: 4).joined(separator: " ") ?? "0000 0000 0000 0000")
                                     .bodyFont
                                     .foregroundColor(QColor.white)
                             HStack {
@@ -116,6 +134,7 @@ struct DashboardView: View {
                 HStack {
                     VStack {
                         Button ( action: {
+                            showTransferView = true
                         }) {
                             Image(systemName: "arrow.up")
                         }.buttonStyle(IconButton())
@@ -132,6 +151,7 @@ struct DashboardView: View {
                     Spacer()
                     VStack {
                         Button ( action: {
+                            showMovementsView = true
                         }) {
                             Image(systemName: "arrow.left.arrow.right")
                         }.buttonStyle(IconButton())
@@ -182,9 +202,52 @@ struct DashboardView: View {
                 }
                 .buttonStyle(MainButton())
                 .padding(5)
-            }.padding()
+            }
+            .offset(y: isRefreshing ? 15 : 0)
+            .animation(.linear(duration: 0.1), value: isRefreshing)
+
+            .padding()
+            .navigationDestination(isPresented: $showMovementsView) {
+                MovementsView()
+            }
+            .navigationDestination(isPresented: $showTransferView) {
+                TransferView()
+            }
         }
     
+    }
+}
+
+struct PullToRefresh: View {
+    @Binding var isRefreshing: Bool
+    let onRefresh: () -> Void
+    
+    var body: some View {
+        VStack {
+            if isRefreshing {
+                ProgressView().progressViewStyle(CircularProgressViewStyle(tint: QColor.errorText))
+            }
+            ScrollView {
+                VStack {
+                    Color.clear.frame(height: 1)
+                }
+                .offset(y: isRefreshing ? 50 : 0)
+            }
+            .coordinateSpace(name: "scroll")
+            .gesture(DragGesture(coordinateSpace: .named("scroll"))
+                        .onChanged(onChanged)
+                        .onEnded(onEnded))
+        }
+    }
+    
+    private func onChanged(drag: DragGesture.Value) {
+        if drag.startLocation.y < drag.location.y {
+            isRefreshing = true
+        }
+    }
+    
+    private func onEnded(drag: DragGesture.Value) {
+        onRefresh()
     }
 }
 

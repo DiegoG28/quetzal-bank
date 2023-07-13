@@ -11,6 +11,6 @@ struct AccountModel: Codable {
     let id_user: Int
     let balance: Int
     let status: Int
-    let card: [CardModel]
+    var card: [CardModel]
     let user: UserModel
 }

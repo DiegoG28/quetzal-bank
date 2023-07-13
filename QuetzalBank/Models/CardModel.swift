@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CardModel: Codable {
+struct CardModel: Codable, Hashable {
     let id: Int
     let id_account: Int
     let card: String
