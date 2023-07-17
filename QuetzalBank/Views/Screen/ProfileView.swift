@@ -21,68 +21,85 @@ struct ProfileView: View {
                     .frame(width: 120, height: 120)
                     .cornerRadius(10)
                 
-                Text("Name:").bodyFont
-                    .foregroundColor(QColor.white).padding(.bottom,10)
-                Button(action: {
-                    
-                }) {
-                    Text("Itzel Aixa Ramon Alonzo").bodyFont
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(QColor.white)
-                        .padding(10)
-                        .background(QColor.textLabelBackground)
-                        .cornerRadius(10)
-                      
+                Group {
+                    Text("Name:").bodyFont
+                        .foregroundColor(QColor.white).padding(.bottom,10)
+                    Button(action: {
+                        
+                    }) {
+                        Text("Itzel Aixa Ramon Alonzo").bodyFont
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(QColor.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                        
+                    }
+                    .padding(.bottom,20)
                 }
-                .padding(.bottom,20)
                 
-                Text("Email:").bodyFont
-                    .foregroundColor(QColor.white).padding(.bottom,10)
-                Button(action: {
-                    
-                }) {
-                    Text(verbatim: "itzelramonf@gmail.com")
-                        .bodyFont
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .background(QColor.textLabelBackground)
-                        .cornerRadius(10)
-                      
+                Group {
+                    Text("Email:").bodyFont
+                        .foregroundColor(QColor.white).padding(.bottom,10)
+                    Button(action: {
+                        
+                    }) {
+                        Text(verbatim: "itzelramonf@gmail.com")
+                            .bodyFont
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                        
+                    }
+                    .padding(.bottom,20)
                 }
-                .padding(.bottom,20)
                 
-                Text("RFC:").bodyFont
-                    .foregroundColor(QColor.white).padding(.bottom,10)
-                Button(action: {
-                    
-                }) {
-                    Text("RAAI011218M23").bodyFont
+                Group {
+                    Text("RFC:").bodyFont
+                        .foregroundColor(QColor.white).padding(.bottom,10)
+                    Button(action: {
+                        
+                    }) {
+                        Text("RAAI011218M23").bodyFont
                         //.frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(QColor.white)
-                        .padding(10)
-                        .background(QColor.textLabelBackground)
-                        .cornerRadius(10)
-                      
+                            .foregroundColor(QColor.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                        
+                    }
+                    .padding(.bottom,20)
                 }
-                .padding(.bottom,20)
                 
-                Text("Phone:").bodyFont
-                    .foregroundColor(QColor.white).padding(.bottom,10)
-                Button(action: {
-                    
-                }) {
-                    Text("9982133028").bodyFont
+                Group {
+                    Text("Phone:").bodyFont
+                        .foregroundColor(QColor.white).padding(.bottom,10)
+                    Button(action: {
+                        
+                    }) {
+                        Text("9982133028").bodyFont
                         //.frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(QColor.white)
-                        .padding(10)
-                        .background(QColor.textLabelBackground)
-                        .cornerRadius(10)
-                      
+                            .foregroundColor(QColor.white)
+                            .padding(10)
+                            .background(QColor.textLabelBackground)
+                            .cornerRadius(10)
+                        
+                    }
                 }
-        }
+                
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("Save").frame(maxWidth: .infinity)
+                }
+                .buttonStyle(MainButton())
+                .padding(5)
+            }
             .padding()
-    }
+        }
     }
 }
 

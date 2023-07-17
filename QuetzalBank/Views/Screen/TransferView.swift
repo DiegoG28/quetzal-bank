@@ -109,9 +109,6 @@ struct TransferView: View {
                 VStack() {
                     Button{
                         origin = cards[activeCardIndex].card
-                        print(amount)
-                        print(origin)
-                        print(destination)
                         
                         Task {
                             origin = cards[activeCardIndex].card

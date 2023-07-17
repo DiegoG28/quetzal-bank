@@ -8,5 +8,5 @@
 import Foundation
 
 struct TransferResponse: Codable {
-    let amount: Int
+    let amount: Float
 }
