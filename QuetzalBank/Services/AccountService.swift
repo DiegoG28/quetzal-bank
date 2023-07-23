@@ -27,6 +27,29 @@ class AccountService {
         return response
     }
     
+    func updateAccountData (accountData: UserUpdateRequest) async throws -> Void {
+        guard let url = URL(string: APIConfig.baseUrl + "/users") else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.addValue("Bearer \(session.token ?? "")", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(accountData)
+        
+        print(accountData)
+
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        print(response)
+        
+        guard response is HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+    }
+    
     func getMovements () async throws -> APIResponse<[MovementModel]> {
         guard let url = URL(string: APIConfig.baseUrl + "/transferences") else {
             throw URLError(.badURL)
@@ -59,7 +82,7 @@ class AccountService {
         let (data, response) = try await URLSession.shared.data(for: request)
 
         
-        guard let httpResponse = response as? HTTPURLResponse else {
+        guard response is HTTPURLResponse else {
             throw URLError(.badServerResponse)
         }
         

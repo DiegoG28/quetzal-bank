@@ -18,6 +18,9 @@
 		F170E22B2A5792FF00639900 /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170E22A2A5792FE00639900 /* TextFieldStyle.swift */; };
 		F1724F012A5A4939003794B5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1724F002A5A4939003794B5 /* AuthService.swift */; };
 		F1724F032A5A4A76003794B5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1724F022A5A4A76003794B5 /* RegisterViewModel.swift */; };
+		F183424C2A6607EF00013F3A /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183424B2A6607EF00013F3A /* UserUpdateRequest.swift */; };
+		F183424E2A66092500013F3A /* UserUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183424D2A66092500013F3A /* UserUpdateResponse.swift */; };
+		F18342502A66128800013F3A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183424F2A66128800013F3A /* ProfileViewModel.swift */; };
 		F1A62AF42A5DBDAE004BBE1F /* MovementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62AF32A5DBDAE004BBE1F /* MovementModel.swift */; };
 		F1A62AF62A5DBDB7004BBE1F /* TransferRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62AF52A5DBDB7004BBE1F /* TransferRequest.swift */; };
 		F1A62AF82A5DC862004BBE1F /* MovementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A62AF72A5DC862004BBE1F /* MovementsView.swift */; };
@@ -85,6 +88,9 @@
 		F170E22A2A5792FE00639900 /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		F1724F002A5A4939003794B5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F1724F022A5A4A76003794B5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F183424B2A6607EF00013F3A /* UserUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
+		F183424D2A66092500013F3A /* UserUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateResponse.swift; sourceTree = "<group>"; };
+		F183424F2A66128800013F3A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F1A62AF32A5DBDAE004BBE1F /* MovementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementModel.swift; sourceTree = "<group>"; };
 		F1A62AF52A5DBDB7004BBE1F /* TransferRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRequest.swift; sourceTree = "<group>"; };
 		F1A62AF72A5DC862004BBE1F /* MovementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovementsView.swift; path = ../../ViewModels/MovementsView.swift; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 				F1F54FC92A413B140061EBC8 /* UserModel.swift */,
 				F1E39B542A43668F0062F56E /* UserRegisterRequest.swift */,
 				F169FD9B2A5395050076EFFE /* UserLogInRequest.swift */,
+				F183424B2A6607EF00013F3A /* UserUpdateRequest.swift */,
+				F183424D2A66092500013F3A /* UserUpdateResponse.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				F1724F022A5A4A76003794B5 /* RegisterViewModel.swift */,
 				F1D747DC2A5DCE4F00C5ED90 /* MovementsViewModel.swift */,
 				F1F76B142A5EF27600B74C35 /* TransferViewModel.swift */,
+				F183424F2A66128800013F3A /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 				F1F54FC22A4136040061EBC8 /* BankModel.swift in Sources */,
 				F1004DBC2A57A5D300ACCC69 /* CardModel.swift in Sources */,
 				F1724F032A5A4A76003794B5 /* RegisterViewModel.swift in Sources */,
+				F183424E2A66092500013F3A /* UserUpdateResponse.swift in Sources */,
 				F1E39B552A43668F0062F56E /* UserRegisterRequest.swift in Sources */,
 				F110251E2A573A26002E9163 /* QColor.swift in Sources */,
 				F1F54FBD2A4134CC0061EBC8 /* APIConfig.swift in Sources */,
@@ -496,6 +506,7 @@
 				F1A62F092A5772F5009887CF /* GradientButton.swift in Sources */,
 				F1F54FC42A4137470061EBC8 /* BankViewModel.swift in Sources */,
 				F1A62AF62A5DBDB7004BBE1F /* TransferRequest.swift in Sources */,
+				F18342502A66128800013F3A /* ProfileViewModel.swift in Sources */,
 				F1E34ACD2A572B6A00B98581 /* UserSession.swift in Sources */,
 				F1A62F072A5763AE009887CF /* Fonts.swift in Sources */,
 				F1F54FD02A413C840061EBC8 /* RegisterView.swift in Sources */,
@@ -507,6 +518,7 @@
 				F1D747DD2A5DCE4F00C5ED90 /* MovementsViewModel.swift in Sources */,
 				F1E34AC52A57227E00B98581 /* TransferView.swift in Sources */,
 				F1F76B132A5EEFB400B74C35 /* TransferResponse.swift in Sources */,
+				F183424C2A6607EF00013F3A /* UserUpdateRequest.swift in Sources */,
 				F1F54FC62A4138030061EBC8 /* BankView.swift in Sources */,
 				F1B224B42A589A0100F4C4FA /* ToggleStyle.swift in Sources */,
 			);
@@ -667,6 +679,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuetzalBank/Preview Content\"";
+				DEVELOPMENT_TEAM = 5T47B93M73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuetzalBank/Info.plist;
@@ -697,6 +710,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuetzalBank/Preview Content\"";
+				DEVELOPMENT_TEAM = 5T47B93M73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuetzalBank/Info.plist;

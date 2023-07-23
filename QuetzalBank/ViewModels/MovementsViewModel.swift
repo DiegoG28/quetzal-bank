@@ -22,7 +22,11 @@ class MovementsViewModel: ObservableObject {
                 }
             }
         } catch {
-            self.message = "Error fetching movements"
+            print("asdf")
+            print(error)
+            DispatchQueue.main.async {
+                self.message = "Error fetching movements"
+            }
         }
     }
     

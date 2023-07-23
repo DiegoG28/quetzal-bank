@@ -8,5 +8,6 @@
 import Foundation
 
 struct APIConfig {
-    static let baseUrl = "http:/localhost:3000"
+    //static let baseUrl = "https://8666-187-188-58-190.ngrok-free.app"
+    static let baseUrl = "http://localhost:3000"
 }

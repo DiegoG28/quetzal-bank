@@ -29,6 +29,8 @@ struct DashboardView: View {
     @State private var isRefreshing = false
     @State private var showMovementsView = false
     @State private var showTransferView = false
+    @State private var showProfileView = false
+
 
     let numberFormatter: NumberFormatter
     let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
@@ -70,10 +72,14 @@ struct DashboardView: View {
             VStack {
                 HStack{
                     VStack (alignment: .leading){
-                        Image("profile")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 47, height: 47)
+                        Button (action: {
+                            showProfileView = true
+                        }) {
+                            Image("profile")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 47, height: 47)
+                        }
                         Text("Welcome, \(session.account?.user.name ?? "")").smallFont.foregroundColor(QColor.white)
                     }
                     Spacer()
@@ -123,7 +129,7 @@ struct DashboardView: View {
                         
                         Text("\(name) \(lastName)")
                             .padding(10)
-                        
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .background(QColor.white)
@@ -212,6 +218,9 @@ struct DashboardView: View {
             }
             .navigationDestination(isPresented: $showTransferView) {
                 TransferView()
+            }
+            .navigationDestination(isPresented: $showProfileView) {
+                ProfileView()
             }
         }
     
