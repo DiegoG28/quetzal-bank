@@ -1,17 +1,15 @@
 //
-//  MovementDetailView.swift
+//  Detail.swift
 //  QuetzalBank
 //
-//  Created by Diego Gutiérrez on 23/07/23.
+//  Created by Diego Gutiérrez on 24/07/23.
 //
 
 import SwiftUI
 
-struct MovementDetailView: View {
+struct Detail: View {
     @ObservedObject private var viewModel = MovementsViewModel()
-    
-    @Binding var movementId: Int
-    
+        
     var body: some View {
         VStack {
             ZStack(alignment: .topLeading) {
@@ -19,23 +17,19 @@ struct MovementDetailView: View {
                 VStack(alignment: .leading){
                     Text("Movements").titleFont.padding(.bottom,10)
                         .foregroundColor(QColor.white)
-                    VStack(alignment: .center){
-                        Image(systemName: "tag.circle")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(QColor.gradientText)
-                            .padding(.bottom, 10)
-                    }
+                    Image(systemName: "tag.circle")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(QColor.gradientText)
+                        .padding(.bottom, 10)
                     
                     if let movementDetail = viewModel.movementDetail {
                         
-                        VStack(alignment: .center){
-                            Text("$"+String(movementDetail.amount))
-                                .titleFont
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.bottom, 20)
-                        }
-                        VStack(alignment: .leading){
+                        Text("$"+String(movementDetail.amount))
+                            .titleFont
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 20)
+                        VStack{
                             Text("Destination account:").bodyFont
                                 .foregroundColor(QColor.white).padding(.bottom,10)
 
@@ -48,7 +42,7 @@ struct MovementDetailView: View {
                                 .cornerRadius(10)
                         }.padding(.bottom, 20)
                         
-                        VStack(alignment: .leading){
+                        VStack{
                             Text("Origin account:").bodyFont
                                 .foregroundColor(QColor.white).padding(.bottom,10)
 
@@ -74,11 +68,12 @@ struct MovementDetailView: View {
         .frame(maxHeight: .infinity)
         .background(QColor.background)
         
-        .onAppear() {
-            Task {
-                await viewModel.fetchMovementDetail(movementId: movementId)
-            }
         }
     }
-}
 
+
+struct Detail_Previews: PreviewProvider {
+    static var previews: some View {
+        Detail()
+    }
+}

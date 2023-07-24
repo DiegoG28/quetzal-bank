@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PantallaRecibir: View {
+struct ReceiveView: View {
     @State var Beneficiary: String?
     @State  var CLABE: String?
     @State private var activeButtonIndex: Int = 0
@@ -54,6 +54,6 @@ struct PantallaRecibir: View {
 
 struct PantallaRecibir_Previews: PreviewProvider {
     static var previews: some View {
-        PantallaRecibir()
+        ReceiveView()
     }
 }

@@ -30,6 +30,7 @@ struct DashboardView: View {
     @State private var showMovementsView = false
     @State private var showTransferView = false
     @State private var showProfileView = false
+    @State private var showReceiveView = false
 
 
     let numberFormatter: NumberFormatter
@@ -149,6 +150,7 @@ struct DashboardView: View {
                     Spacer()
                     VStack {
                         Button ( action: {
+                            showReceiveView = true
                         }) {
                             Image(systemName: "arrow.down")
                         }.buttonStyle(IconButton())
@@ -221,6 +223,9 @@ struct DashboardView: View {
             }
             .navigationDestination(isPresented: $showProfileView) {
                 ProfileView()
+            }
+            .navigationDestination(isPresented: $showReceiveView) {
+                ReceiveView()
             }
         }
     
