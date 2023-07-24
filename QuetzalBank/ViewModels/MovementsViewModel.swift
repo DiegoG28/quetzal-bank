@@ -11,6 +11,7 @@ class MovementsViewModel: ObservableObject {
     private var accountService = AccountService()
     
     @Published var movements: [MovementModel]? = nil
+    @Published var movementDetail: MovementDetailModel? = nil
     @Published var message: String?
     
     func fetchMovements () async {
@@ -22,10 +23,26 @@ class MovementsViewModel: ObservableObject {
                 }
             }
         } catch {
-            print("asdf")
             print(error)
             DispatchQueue.main.async {
                 self.message = "Error fetching movements"
+            }
+        }
+    }
+    
+    func fetchMovementDetail (movementId: Int) async {
+        do {
+            print("Fetching movement detail")
+            let response = try await accountService.getMovementDetail(movementId: movementId)
+            if (response.status == "Success") {
+                DispatchQueue.main.async {
+                    self.movementDetail = response.data
+                }
+            }
+        } catch {
+            print(error)
+            DispatchQueue.main.async {
+                self.message = "Error fetching movement detail"
             }
         }
     }

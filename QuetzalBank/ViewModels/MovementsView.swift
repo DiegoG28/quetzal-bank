@@ -10,7 +10,12 @@ import SwiftUI
 struct MovementsView: View {
     @ObservedObject private var viewModel = MovementsViewModel()
     
+    @State private var showMovementDetail = false
+    @State private var movementId = 0
+
+    
     var body: some View {
+
         VStack {
             Text("Movements")
                 .titleFont
@@ -27,6 +32,10 @@ struct MovementsView: View {
                     if let movements = viewModel.movements {
                         ForEach(movements, id: \.id) { movement in
                             MovementRowView(movement: movement)
+                                .simultaneousGesture(TapGesture().onEnded { _ in
+                                    movementId = movement.id
+                                    showMovementDetail = true
+                                })
                         }
                     } else {
                         Text("No movements found")
@@ -41,12 +50,17 @@ struct MovementsView: View {
         }
         .padding()
         .frame(maxHeight: .infinity)
-        .background(Color("Background"))
+        .background(QColor.background)
         .onAppear() {
             Task {
                 await viewModel.fetchMovements()
             }
         }
+        
+        .navigationDestination(isPresented: $showMovementDetail) {
+            MovementDetailView(movementId: $movementId)
+        }
+        
     }
 }
 
@@ -70,6 +84,8 @@ struct MovementRowView: View {
             Text("$" + String(movement.amount))
         }
         .frame(maxWidth: .infinity, maxHeight: 50)
+        .background(Color.clear)
+        .contentShape(Rectangle())
         .foregroundColor(QColor.white)
     }
 }

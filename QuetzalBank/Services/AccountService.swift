@@ -67,6 +67,23 @@ class AccountService {
         return response
     }
     
+    func getMovementDetail(movementId: Int) async throws -> APIResponse<MovementDetailModel> {
+        guard let url = URL(string: APIConfig.baseUrl + "/transferences/\(movementId)") else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(session.token ?? "")", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        let response = try JSONDecoder().decode(APIResponse<MovementDetailModel>.self, from: data)
+        print(response)
+        return response
+    }
+    
     func transfer (transferRequest: TransferRequest) async throws -> APIResponse<TransferResponse> {
         guard let url = URL(string: APIConfig.baseUrl + "/transferences") else {
             throw URLError(.badURL)
