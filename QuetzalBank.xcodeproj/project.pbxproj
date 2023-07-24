@@ -11,7 +11,6 @@
 		F1004DBC2A57A5D300ACCC69 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1004DBB2A57A5D300ACCC69 /* CardModel.swift */; };
 		F110251C2A5738CF002E9163 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110251B2A5738CF002E9163 /* MainButton.swift */; };
 		F110251E2A573A26002E9163 /* QColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110251D2A573A26002E9163 /* QColor.swift */; };
-		F14448BF2A6F25F000E7A3A4 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14448BE2A6F25F000E7A3A4 /* Detail.swift */; };
 		F15E9E4A2A54E9FC0094AA72 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E9E492A54E9FC0094AA72 /* CustomTextField.swift */; };
 		F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD992A5393E00076EFFE /* LoginView.swift */; };
 		F169FD9C2A5395050076EFFE /* UserLogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169FD9B2A5395050076EFFE /* UserLogInRequest.swift */; };
@@ -84,7 +83,6 @@
 		F1004DBB2A57A5D300ACCC69 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		F110251B2A5738CF002E9163 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		F110251D2A573A26002E9163 /* QColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QColor.swift; sourceTree = "<group>"; };
-		F14448BE2A6F25F000E7A3A4 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		F15E9E492A54E9FC0094AA72 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F169FD992A5393E00076EFFE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F169FD9B2A5395050076EFFE /* UserLogInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogInRequest.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				F1E34ACA2A5722A900B98581 /* ReceiveView.swift */,
 				F1B224B52A58AB3B00F4C4FA /* DashboardView.swift */,
 				F1AAC2DE2A6E017A000E3984 /* MovementDetailView.swift */,
-				F14448BE2A6F25F000E7A3A4 /* Detail.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -489,7 +486,6 @@
 			files = (
 				F1F54F8E2A412D2E0061EBC8 /* ContentView.swift in Sources */,
 				F1AAC2DF2A6E017A000E3984 /* MovementDetailView.swift in Sources */,
-				F14448BF2A6F25F000E7A3A4 /* Detail.swift in Sources */,
 				F1F54FCE2A413BF80061EBC8 /* LoginViewModel.swift in Sources */,
 				F1F54FBA2A4133D30061EBC8 /* BankService.swift in Sources */,
 				F169FD9A2A5393E00076EFFE /* LoginView.swift in Sources */,

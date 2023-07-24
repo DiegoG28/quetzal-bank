@@ -19,21 +19,25 @@ struct MovementDetailView: View {
                 VStack(alignment: .leading){
                     Text("Movements").titleFont.padding(.bottom,10)
                         .foregroundColor(QColor.white)
-                    VStack(alignment: .center){
-                        Image(systemName: "tag.circle")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(QColor.gradientText)
-                            .padding(.bottom, 10)
-                    }
+                    HStack {
+                            Spacer()
+                            Image(systemName: "tag.circle")
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(QColor.gradientText)
+                                .padding(.bottom, 10)
+                            Spacer()
+                        }
                     
                     if let movementDetail = viewModel.movementDetail {
                         
-                        VStack(alignment: .center){
+                        HStack{
+                            Spacer()
                             Text("$"+String(movementDetail.amount))
-                                .titleFont
+                                .subtitleFont
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.bottom, 20)
+                            Spacer()
                         }
                         VStack(alignment: .leading){
                             Text("Destination account:").bodyFont
