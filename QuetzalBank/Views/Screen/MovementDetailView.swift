@@ -11,7 +11,11 @@ struct MovementDetailView: View {
     @ObservedObject private var viewModel = MovementsViewModel()
     
     @Binding var movementId: Int
-
+    
+    let gradient = LinearGradient(colors: [Color(.blue), Color(.purple)],
+                                  startPoint: .topLeading,
+                                  endPoint: .bottomTrailing)
+    
     var body: some View {
         VStack {
             ZStack(alignment: .topLeading) {
@@ -24,7 +28,7 @@ struct MovementDetailView: View {
                             Image(systemName: "tag.circle")
                                 .resizable()
                                 .frame(width: 80, height: 80)
-                                .buttonStyle(IconButton())
+                                .foregroundColor(.gray)
                                 .padding(.bottom, 10)
                             Spacer()
                         }
@@ -32,7 +36,7 @@ struct MovementDetailView: View {
                     if let movementDetail = viewModel.movementDetail {
                         
                             Text("$"+String(movementDetail.amount))
-                                .subtitleFont
+                                .titleFont
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 20)
                         
