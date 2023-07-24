@@ -11,34 +11,31 @@ struct MovementDetailView: View {
     @ObservedObject private var viewModel = MovementsViewModel()
     
     @Binding var movementId: Int
-    
+
     var body: some View {
         VStack {
             ZStack(alignment: .topLeading) {
                 QColor.background.ignoresSafeArea()
                 VStack(alignment: .leading){
-                    Text("Movements").titleFont.padding(.bottom,10)
+                    Text("Details").titleFont.padding(.bottom,10)
                         .foregroundColor(QColor.white)
                     HStack {
                             Spacer()
                             Image(systemName: "tag.circle")
                                 .resizable()
                                 .frame(width: 80, height: 80)
-                                .foregroundColor(QColor.gradientText)
+                                .buttonStyle(IconButton())
                                 .padding(.bottom, 10)
                             Spacer()
                         }
                     
                     if let movementDetail = viewModel.movementDetail {
                         
-                        HStack{
-                            Spacer()
                             Text("$"+String(movementDetail.amount))
                                 .subtitleFont
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 20)
-                            Spacer()
-                        }
+                        
                         VStack(alignment: .leading){
                             Text("Destination account:").bodyFont
                                 .foregroundColor(QColor.white).padding(.bottom,10)
